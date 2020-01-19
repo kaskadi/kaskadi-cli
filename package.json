@@ -1,0 +1,25 @@
+{
+  "name": "kaskadi-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "kaskadi": "./kaskadi"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaskadi/kaskadi-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaskadi/kaskadi-cli/issues"
+  },
+  "homepage": "https://github.com/kaskadi/kaskadi-cli#readme",
+  "dependencies": {
+    "puppeteer": "^2.0.0"
+  }
+}
