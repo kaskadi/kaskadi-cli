@@ -28,7 +28,7 @@ module.exports = function init(){
   try{
     let f4 = fs.readFileSync(process.cwd() + "/kaskadi-template.js","utf8")
     f4 = f4.replace(/kaskadi-template/g,name)
-    f4 = f4.replace(/kaskadiTemplate/g,name)
+    f4 = f4.replace(/KaskadiTemplate/g,name)
     fs.writeFileSync(process.cwd() + "/kaskadi-template.js",f4,"utf8")
     console.log(`${COL1}updated ${RESET} kaskadi-template.js ${COL2}✓${RESET} `)
     fs.renameSync("kaskadi-template.js",name+".js")
