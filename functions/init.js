@@ -28,7 +28,7 @@ module.exports = function init(){
   try{
     let f4 = fs.readFileSync(process.cwd() + "/kaskadi-template.js","utf8")
     f4 = f4.replace(/kaskadi-template/g,name)
-    f4 = f4.replace(/KaskadiTemplate/g,name)
+    f4 = f4.replace(/KaskadiTemplate/g,snakeToCamel(name))
     fs.writeFileSync(process.cwd() + "/kaskadi-template.js",f4,"utf8")
     console.log(`${COL1}updated ${RESET} kaskadi-template.js ${COL2}✓${RESET} `)
     fs.renameSync("kaskadi-template.js",name+".js")
@@ -39,4 +39,17 @@ module.exports = function init(){
       console.log(`${COL4}error ${RESET} kaskadi-template.js not found ${COL4}x${RESET} `)
     }
   }
+}
+
+function snakeToCamel(word){
+  let res = ""
+  for(var i = 0; i< word.length; i++){
+    if(word.charAt(i)==="-"){
+      i++
+      res += word.charAt(i).toUpperCase()
+    }else{
+      res += word.charAt(i)
+    }
+  }
+  return res
 }
