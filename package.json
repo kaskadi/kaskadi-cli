@@ -7,7 +7,7 @@
     "kaskadi": "./kaskadi"
   },
   "scripts": {
-    "test": "mocha test/basic.test.js"
+    "test": "mocha test/basic.test.js --require test/mocha-color-setter.js"
   },
   "repository": {
     "type": "git",
