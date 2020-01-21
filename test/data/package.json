@@ -1,0 +1,41 @@
+{
+  "name": "template-kaskadi-element",
+  "version": "1.0.0",
+  "description": "",
+  "main": "template-kaskadi-element.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "example": "xdg-open localhost:1234/example && serve -l 1234",
+    "test": "standard --fix && karma start --single-run --browsers ChromeHeadless karma.conf.js",
+    "kaskadi-init": "kaskadi init && git add -u && git commit -m 'initialized from template'",
+    "coverage": "cc-test-reporter before-build && npm test && cc-test-reporter after-build -t lcov -r 7b14f1f9497bb8e48bbd7efbe19c985f33ddc452ac0a5931699136a43494c6ee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaskadi/template-kaskadi-element.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaskadi/template-kaskadi-element/issues"
+  },
+  "homepage": "https://github.com/kaskadi/template-kaskadi-element#readme",
+  "kaskadi": {
+    "s3-push": {
+      "files": [
+        {
+          "src": "template-kaskadi-element.js",
+          "dest": "modules/@kaskadi/template-kaskadi-element/{branch}template-kaskadi-element.js"
+        },
+        {
+          "src": "example/index.html",
+          "dest": "modules/@kaskadi/template-kaskadi-element/{branch}example/index.html"
+        }
+      ]
+    }
+  }
+}
