@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 const init = require('../functions/init.js')
 const fs = require('fs')
 const ncp = require('ncp').ncp
@@ -50,13 +51,13 @@ describe('#init()', () => {
       pjson.homepage.should.equal(`https://github.com/kaskadi/${folderName}#readme`)
     })
     it(`should rename 1st file source to ${folderName}.js`, () => {
-      pjson.kaskadi["s3-push"].files[0].src.should.equal(`${folderName}.js`)
+      pjson.kaskadi['s3-push'].files[0].src.should.equal(`${folderName}.js`)
     })
     it(`should rename 1st file destination to modules/@kaskadi/${folderName}/{branch}${folderName}.js`, () => {
-      pjson.kaskadi["s3-push"].files[0].dest.should.equal(`modules/@kaskadi/${folderName}/{branch}${folderName}.js`)
+      pjson.kaskadi['s3-push'].files[0].dest.should.equal(`modules/@kaskadi/${folderName}/{branch}${folderName}.js`)
     })
     it(`should rename 2nd file destination to modules/@kaskadi/${folderName}/{branch}example/index.html`, () => {
-      pjson.kaskadi["s3-push"].files[1].dest.should.equal(`modules/@kaskadi/${folderName}/{branch}example/index.html`)
+      pjson.kaskadi['s3-push'].files[1].dest.should.equal(`modules/@kaskadi/${folderName}/{branch}example/index.html`)
     })
   })
   describe(`should rename ${baseName}.js to ${folderName}.js and replace all occurences of ${baseName} and ${baseClassName}`, () => {
