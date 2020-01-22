@@ -1,11 +1,10 @@
 const fs = require('fs')
 const color = require('./colors.js')
-const COL1 = color('limegreen')
+const COL1 = color('royalblue')
 const COL2 = color('limegreen')
 const COL3 = color('royalblue')
 const COL4 = color('crimson')
 const RESET = '\x1b[0m'
-
 module.exports = function init () {
   const wd = process.cwd().split('/')
   const name = wd[wd.length - 1]

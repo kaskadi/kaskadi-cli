@@ -18,7 +18,7 @@ module.exports = function color (...args) {
 }
 
 function extractFromString (str) {
-  const firstLetter = args[0].substr(0, 1)
+  const firstLetter = str.substr(0, 1)
   if (firstLetter === '#') {
     return getColorFromRGB(str)
   } else {
@@ -27,13 +27,13 @@ function extractFromString (str) {
 }
 
 function cliColorString (options) {
-  const opt = {...{bg: 0, style: 10}, ...options}
-  const l = bg ? 48 : 38
-  return `\x1b[${l};2;${rgb.r};${rgb.g};${rgb.b}m\x1b[${s}m`
+  const opt = { ...{ bg: 0, style: 10 }, ...options }
+  const l = opt.bg ? 48 : 38
+  return `\x1b[${l};2;${opt.r};${opt.g};${opt.b}m\x1b[${opt.style}m`
 }
 
 function setMember (obj, name, arr, offs) {
-  if (arr.length < offs) {
+  if (arr.length > offs) {
     obj[name] = arr[offs]
   }
 }
