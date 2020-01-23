@@ -15,7 +15,11 @@ module.exports = function init () {
   replaceNameInFile(process.cwd() + '/example/index.html', baseName, name)
   replaceNameInFile(`${process.cwd()}/${baseName}.js`, baseName, name)
   replaceNameInFile(`${process.cwd()}/${baseName}.js`, snakeToCamel(baseName), snakeToCamel(name))
-  fs.renameSync(`${baseName}.js`, name + '.js')
+  if (fs.existsSync(`${baseName}.js`)) {
+    fs.renameSync(`${baseName}.js`, name + '.js')
+  } else {
+    log(COL4, 'error', `${baseName}.js not found`, false)
+  }
   log(COL1, 'rename', `${baseName}.js to ${COL3}${name}.js`, true)
 }
 

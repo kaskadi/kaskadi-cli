@@ -31,6 +31,10 @@
     "rimraf": "^3.0.0",
     "standard": "^14.3.1"
   },
+  "nyc":{
+    "reporter":["text","lcov","html"],
+    "report-dir":"./coverage"
+  },
   "standard": {
     "ignore": [
       "/test/data/**"

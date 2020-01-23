@@ -77,6 +77,9 @@ describe('#init()', () => {
       const files = file.split('\n')
       files[1].should.equal(className)
     })
+    it('should not throw on second run', () => {
+      init.should.not.throw()
+    })
   })
   after(() => {
     process.chdir('../../')
