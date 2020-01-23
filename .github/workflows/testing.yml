@@ -1,4 +1,4 @@
-name: testing
+name: testing + coverage
 
 on: [push]
 
@@ -11,5 +11,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: install deps
       run: npm i
-    - name: test
-      run: npm test
+    - uses: paambaati/codeclimate-action@v2.4.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.REPORTER_ID }}
+      with:
+        coverageCommand: npm coverage
