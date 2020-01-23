@@ -14,5 +14,5 @@ jobs:
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.REPORTER_ID }}
       with:
-        coverageCommand: npm test
+        coverageCommand: npm coverage
         coverageLocations: ./coverage/lcov.info:lcov
