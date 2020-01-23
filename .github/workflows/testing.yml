@@ -11,8 +11,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: install deps
       run: npm i
+    - name: coverage
     - uses: paambaati/codeclimate-action@v2.4.0
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.REPORTER_ID }}
       with:
-        coverageCommand: npm coverage
+        coverageCommand: npm run coverage
