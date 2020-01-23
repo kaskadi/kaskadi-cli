@@ -3,17 +3,15 @@ name: testing + coverage
 on: [push]
 
 jobs:
-  build:
-
+  coverage:
+    name: coverage
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: install deps
+    - name: Install dependencies
       run: npm i
-    - name: coverage
-      - uses: paambaati/codeclimate-action@v2.4.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.REPORTER_ID }}
-        with:
-          coverageCommand: npm run coverage
+    - uses: paambaati/codeclimate-action@v2.4.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.REPORTER_ID }}
+      with:
+        coverageCommand: npm test
