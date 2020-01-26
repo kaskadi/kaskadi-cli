@@ -44,8 +44,8 @@ describe('#init()', () => {
     it(`should rename repository url to git+https://github.com/kaskadi/${folderName}.git`, () => {
       pjson.repository.url.should.equal(`git+https://github.com/kaskadi/${folderName}.git`)
     })
-    it(`should rename repository issues url to https://github.com/kaskadi/${folderName}#readme`, () => {
-      pjson.bugs.url.should.equal(`https://github.com/kaskadi/${folderName}#readme`)
+    it(`should rename repository issues url to https://github.com/kaskadi/${folderName}/issues`, () => {
+      pjson.bugs.url.should.equal(`https://github.com/kaskadi/${folderName}/issues`)
     })
     it(`should rename homepage url to https://github.com/kaskadi/${folderName}#readme`, () => {
       pjson.homepage.should.equal(`https://github.com/kaskadi/${folderName}#readme`)
