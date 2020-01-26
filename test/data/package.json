@@ -1,5 +1,5 @@
 {
-  "name": "template-kaskadi-element",
+  "name": "@kaskadi/template-kaskadi-element",
   "version": "1.0.0",
   "description": "",
   "main": "template-kaskadi-element.js",

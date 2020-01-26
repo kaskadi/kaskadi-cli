@@ -9,7 +9,7 @@ module.exports = function init () {
   const wd = process.cwd().split('/')
   const name = wd[wd.length - 1]
   const baseName = 'template-kaskadi-element'
-  updatePackageJSON(name)
+  updatePackageJSON(baseName, name)
   replaceNameInFile(process.cwd() + '/test/basic.test.js', baseName, name)
   replaceNameInFile(process.cwd() + '/README.md', baseName, name)
   replaceNameInFile(process.cwd() + '/example/index.html', baseName, name)
@@ -34,19 +34,24 @@ function replaceNameInFile (fileName, oldName, newName) {
   }
 }
 
-function updatePackageJSON (name) {
+function updatePackageJSON (oldName, newName) {
   const f = fs.readFileSync(process.cwd() + '/package.json', 'utf8')
   const p = JSON.parse(f)
-  p.name = '@kaskadi/' + name
-  p.main = name + '.js'
-  p.repository.url = `git+https://github.com/kaskadi/${name}.git`
-  p.bugs.url = `https://github.com/kaskadi/${name}#readme`
-  p.homepage = `https://github.com/kaskadi/${name}#readme`
-  p.kaskadi['s3-push'].files[0].src = `${name}.js`
-  p.kaskadi['s3-push'].files[0].dest = `modules/@kaskadi/${name}/{branch}${name}.js`
-  p.kaskadi['s3-push'].files[1].dest = `modules/@kaskadi/${name}/{branch}example/index.html`
+  p.name = replaceInString(p.name, oldName, newName)
+  p.main = replaceInString(p.main, oldName, newName)
+  p.repository.url = replaceInString(p.repository.url, oldName, newName)
+  p.bugs.url = replaceInString(p.bugs.url, oldName, newName)
+  p.homepage = replaceInString(p.homepage, oldName, newName)
+  p.kaskadi['s3-push'].files[0].src = replaceInString(p.kaskadi['s3-push'].files[0].src, oldName, newName)
+  p.kaskadi['s3-push'].files[0].dest = replaceInString(p.kaskadi['s3-push'].files[0].dest, oldName, newName)
+  p.kaskadi['s3-push'].files[1].dest = replaceInString(p.kaskadi['s3-push'].files[1].dest, oldName, newName)
   fs.writeFileSync(process.cwd() + '/package.json', JSON.stringify(p, null, 2), 'utf8')
   updateNotice('package.json')
+}
+
+function replaceInString (string, oldName, newName) {
+  const oldNameRegex = new RegExp(oldName, 'g')
+  return string.replace(oldNameRegex, newName)
 }
 
 function updateNotice (name) {
