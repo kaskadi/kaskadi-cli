@@ -16,7 +16,7 @@
 const functions = {
   init: require("./functions/init.js"),
   render: require("./functions/render.js"),
-  version: function(){console.log("1.0.0")}
+  version: require("./functions/version.js")
 }
 
 functions[process.argv[2]](process.argv.splice(3))
