@@ -1,6 +1,6 @@
 {
   "name": "kaskadi-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -31,9 +31,13 @@
     "rimraf": "^3.0.0",
     "standard": "^14.3.1"
   },
-  "nyc":{
-    "reporter":["text","lcov","html"],
-    "report-dir":"./coverage"
+  "nyc": {
+    "reporter": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "report-dir": "./coverage"
   },
   "standard": {
     "ignore": [
