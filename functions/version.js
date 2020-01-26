@@ -3,7 +3,7 @@ const p = require(process.cwd() + "/package.json")
 async function version () {
   let version = 0 
   try{
-    version = (await getNPMVersion("kaskadi-cli")).trim()
+    version = (await getNPMVersion(p.name)).trim()
   }catch(err){
     console.log("package not on npm! aborting")
   }
