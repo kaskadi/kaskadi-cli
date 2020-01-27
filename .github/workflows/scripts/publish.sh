@@ -7,6 +7,7 @@ touch .npmrc
 echo "_auth=\"$NPM_TOKEN\"
 email=a.lemaire@klimapartner.de
 always-auth=true" > .npmrc
+npm login
 # compare current and remote version
 CURRENT_VERSION="$(getVersion)"
 REMOTE_VERSION="$(npm view kaskadi-cli version)"
