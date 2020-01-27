@@ -1,4 +1,4 @@
-name: testing + coverage
+name: publish
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
       - 'kaskadi'
       - 'functions/**'
 jobs:
-  coverage:
+  publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -21,3 +21,7 @@ jobs:
       with:
         coverageCommand: npm run coverage
         coverageLocations: ./coverage/lcov.info:lcov
+    - name: Publish to NPM
+      run: bash .github/workflows/scripts/publish.sh
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

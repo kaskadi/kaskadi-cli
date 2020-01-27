@@ -1,6 +1,6 @@
 {
   "name": "kaskadi-cli",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "standard --fix && mocha test/*.test.js --require test/mocha-color-setter.js",
     "coverage": "nyc npm run test",
-    "version.me":"node -p -e \"const exec=require('child_process').exec;require('./package.json').version\""
+    "version": "node -e \"console.log(require('./package.json').version)\""
   },
   "repository": {
     "type": "git",
