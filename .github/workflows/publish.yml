@@ -24,4 +24,4 @@ jobs:
     - name: Publish to NPM
       run: bash .github/workflows/scripts/publish.sh
       env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
