@@ -8,8 +8,7 @@
   },
   "scripts": {
     "test": "standard --fix && mocha test/*.test.js --require test/mocha-color-setter.js",
-    "coverage": "nyc npm run test",
-    "version": "node -e \"console.log(require('./package.json').version)\""
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",
