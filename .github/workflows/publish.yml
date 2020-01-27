@@ -12,8 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
     - name: Install dependencies
-      run: npm i
+      run: npm ci
     - name: Coverage
       uses: paambaati/codeclimate-action@v2.4.0
       env:
