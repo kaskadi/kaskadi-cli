@@ -44,13 +44,13 @@ function updatePackageJSON (oldName, newName) {
 
 function replaceInTree (root, oldName, newName) {
   for (const name in root) {
-    switch(typeof root[name]){
-      case: "string"
+    switch (typeof root[name]) {
+      case 'string':
         replaceInMember(root, name, oldName, newName)
-      break
-      case: "object"
-       replaceInTree(root[name], oldName, newName)
-      break
+        break
+      case 'object':
+        replaceInTree(root[name], oldName, newName)
+        break
     }
   }
 }
