@@ -46,7 +46,8 @@ function replaceInTree (root, oldName, newName) {
   for (const name in root) {
     if (typeof root[name] === 'string') {
       replaceInMember(root, name, oldName, newName)
-    } else if (typeof root[name] === 'object') {
+    }
+    if (typeof root[name] === 'object') {
       replaceInTree(root[name], oldName, newName)
     }
   }
