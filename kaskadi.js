@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-//const readline = require('readline');
+// const readline = require('readline');
 // function askQuestion(query) {
 //     const rl = readline.createInterface({
 //         input: process.stdin,
@@ -14,11 +14,11 @@
 // }
 
 const functions = {
-  init: require("./functions/init.js"),
-  render: require("./functions/render.js"),
-  version: require("./functions/version.js")
+  init: require('./functions/init.js'),
+  render: require('./functions/render.js'),
+  version: require('./functions/version.js')
 }
 
 functions[process.argv[2]](process.argv.splice(3))
 
-//test
+// test
