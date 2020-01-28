@@ -37,21 +37,24 @@ function replaceNameInFile (fileName, oldName, newName) {
 function updatePackageJSON (oldName, newName) {
   const f = fs.readFileSync(process.cwd() + '/package.json', 'utf8')
   const p = JSON.parse(f)
-  p.name = replaceInString(p.name, oldName, newName)
-  p.main = replaceInString(p.main, oldName, newName)
-  p.repository.url = replaceInString(p.repository.url, oldName, newName)
-  p.bugs.url = replaceInString(p.bugs.url, oldName, newName)
-  p.homepage = replaceInString(p.homepage, oldName, newName)
-  p.kaskadi['s3-push'].files[0].src = replaceInString(p.kaskadi['s3-push'].files[0].src, oldName, newName)
-  p.kaskadi['s3-push'].files[0].dest = replaceInString(p.kaskadi['s3-push'].files[0].dest, oldName, newName)
-  p.kaskadi['s3-push'].files[1].dest = replaceInString(p.kaskadi['s3-push'].files[1].dest, oldName, newName)
+  replaceInTree(p, oldName, newName)
   fs.writeFileSync(process.cwd() + '/package.json', JSON.stringify(p, null, 2), 'utf8')
   updateNotice('package.json')
 }
 
-function replaceInString (string, oldName, newName) {
+function replaceInTree (root, oldName, newName) {
+  for (const name in root) {
+    if (typeof root[name] === 'string') {
+      replaceInMember(root, name, oldName, newName)
+    } else if (typeof root[name] === 'object') {
+      replaceInTree(root[name], oldName, newName)
+    }
+  }
+}
+
+function replaceInMember (obj, member, oldName, newName) {
   const oldNameRegex = new RegExp(oldName, 'g')
-  return string.replace(oldNameRegex, newName)
+  obj[member] = obj[member].replace(oldNameRegex, newName)
 }
 
 function updateNotice (name) {
