@@ -1,10 +1,10 @@
 {
   "name": "kaskadi-cli",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "",
   "main": "index.js",
   "bin": {
-    "kaskadi": "./kaskadi"
+    "kaskadi": "./kaskadi.js"
   },
   "scripts": {
     "test": "standard --fix && mocha test/*.test.js --require test/mocha-color-setter.js",
