@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "kaskadi": "./kaskadi"
+    "kaskadi": "./kaskadi.js"
   },
   "scripts": {
     "test": "standard --fix && mocha test/*.test.js --require test/mocha-color-setter.js",
