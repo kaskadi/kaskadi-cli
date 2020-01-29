@@ -12,10 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-        registry-url: https://registry.npmjs.org/
     - name: Install dependencies
       run: npm ci
     - name: Coverage
@@ -25,7 +21,14 @@ jobs:
       with:
         coverageCommand: npm run coverage
         coverageLocations: ./coverage/lcov.info:lcov
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+        registry-url: https://registry.npmjs.org/
     - name: Publish to NPM
-      run: bash .github/workflows/scripts/publish.sh
+      uses: kaskadi/action-npmpub@master
+      with:
+        USERNAME: Alexis Lemaire
+        EMAIL: a.lemaire@klimapartner.de
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
