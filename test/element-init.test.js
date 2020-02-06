@@ -15,7 +15,9 @@ describe('#elementInit()', () => {
   before(async () => {
     await cp('test/data', `test/${folderName}`)
     process.chdir(`test/${folderName}`)
-    elementInit()
+    const wd = process.cwd()
+    const name = wd.split('/')[wd.split('/').length - 1]
+    elementInit(wd, baseName, name)
   })
   it(`should rename all occurences of ${baseName} to ${folderName} in README.md`, () => {
     const file = fs.readFileSync('README.md', 'utf8').trim()
@@ -78,7 +80,9 @@ describe('#elementInit()', () => {
       files[1].should.equal(className)
     })
     it('should not throw on second run', () => {
-      elementInit.should.not.throw()
+      const wd = process.cwd()
+      const name = wd.split('/')[wd.split('/').length - 1]
+      elementInit.should.not.throw(wd, baseName, name)
     })
   })
   after(() => {
