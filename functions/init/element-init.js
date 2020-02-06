@@ -5,11 +5,11 @@ const snakeToCamel = require('./helpers/snake-to-camel.js')
 const log = require('./helpers/log.js')
 
 module.exports = function elementInit (wd, baseName, name) {
-  const json = {
+  const jsonData = {
     baseName,
     name
   }
-  const files = [
+  const fileData = [
     {
       baseName,
       name,
@@ -22,8 +22,8 @@ module.exports = function elementInit (wd, baseName, name) {
     }
   ]
   const initData = {
-    json,
-    files
+    jsonData,
+    fileData
   }
   initFiles(wd, initData)
   if (fs.existsSync(`${baseName}.js`)) {
