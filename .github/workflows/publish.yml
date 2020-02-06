@@ -32,3 +32,4 @@ jobs:
         EMAIL: a.lemaire@klimapartner.de
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        COMMIT_MSG: ${{ github.event.head_commit.message }}
