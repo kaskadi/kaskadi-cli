@@ -6,7 +6,7 @@ module.exports = function lambdaInit (wd, baseName, name) {
   const fileData = [{
     baseName,
     name,
-    paths: ['README.md', 'serverless.yml', ]
+    paths: ['README.md', 'serverless.yml']
   }]
   const initData = { jsonData, fileData }
   initFiles(wd, initData)
