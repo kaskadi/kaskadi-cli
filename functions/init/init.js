@@ -1,6 +1,7 @@
 const elementInit = require('./element-init.js')
 const actionInit = require('./action-init.js')
 const apiInit = require('./api-init.js')
+const lambdaInit = require('./lambda-init.js')
 const defaultColors = require('./default-colors.js')
 const log = require('./helpers/log.js')
 
@@ -21,6 +22,10 @@ module.exports = function init (args) {
     case 'api':
       baseName = 'template-kaskadi-api'
       apiInit(wd, baseName, name)
+      break
+    case 'lambda':
+      baseName = 'template-kaskadi-lambda'
+      lambdaInit(wd, baseName, name)
       break
     default:
       log(defaultColors.COL4, 'error', 'no operation specified, aborting')
