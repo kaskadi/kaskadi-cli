@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const init = require('../functions/init.js')
+const elementInit = require('../functions/init/element-init.js')
 const fs = require('fs')
 const ncp = require('ncp').ncp
 const rimraf = require('rimraf')
@@ -11,11 +11,11 @@ const className = 'WorkingData'
 const baseName = 'template-kaskadi-element'
 const baseClassName = 'TemplateKaskadiElement'
 
-describe('#init()', () => {
+describe('#elementInit()', () => {
   before(async () => {
     await cp('test/data', `test/${folderName}`)
     process.chdir(`test/${folderName}`)
-    init()
+    elementInit()
   })
   it(`should rename all occurences of ${baseName} to ${folderName} in README.md`, () => {
     const file = fs.readFileSync('README.md', 'utf8').trim()
@@ -78,7 +78,7 @@ describe('#init()', () => {
       files[1].should.equal(className)
     })
     it('should not throw on second run', () => {
-      init.should.not.throw()
+      elementInit.should.not.throw()
     })
   })
   after(() => {

@@ -14,7 +14,7 @@
 // }
 
 const functions = {
-  init: require('./functions/init.js'),
+  "element-init": require('./functions/init/element-init.js'),
   render: require('./functions/render.js'),
   version: require('./functions/version.js')
 }

@@ -1,27 +1,5 @@
 const fs = require('fs')
-const color = require('./colors.js')
-const COL1 = color('royalblue')
-const COL2 = color('limegreen')
-const COL3 = color('royalblue')
-const COL4 = color('crimson')
-const RESET = '\x1b[0m'
-module.exports = function init () {
-  const wd = process.cwd().split('/')
-  const name = wd[wd.length - 1]
-  const baseName = 'template-kaskadi-element'
-  updatePackageJSON(baseName, name)
-  replaceNameInFile(process.cwd() + '/test/basic.test.js', baseName, name)
-  replaceNameInFile(process.cwd() + '/README.md', baseName, name)
-  replaceNameInFile(process.cwd() + '/example/index.html', baseName, name)
-  replaceNameInFile(`${process.cwd()}/${baseName}.js`, baseName, name)
-  replaceNameInFile(`${process.cwd()}/${baseName}.js`, snakeToCamel(baseName), snakeToCamel(name))
-  if (fs.existsSync(`${baseName}.js`)) {
-    fs.renameSync(`${baseName}.js`, name + '.js')
-  } else {
-    log(COL4, 'error', `${baseName}.js not found`, false)
-  }
-  log(COL1, 'rename', `${baseName}.js to ${COL3}${name}.js`, true)
-}
+const defaultColors = require('./default-colors.js')
 
 function replaceNameInFile (fileName, oldName, newName) {
   const oldNameRegex = new RegExp(oldName, 'g')
@@ -30,7 +8,7 @@ function replaceNameInFile (fileName, oldName, newName) {
     fs.writeFileSync(fileName, file.replace(oldNameRegex, newName), 'utf8')
     updateNotice(fileName)
   } else {
-    log(COL4, 'error', `${fileName} not found`, false)
+    log(defaultColors.COL4, 'error', `${fileName} not found`, false)
   }
 }
 
@@ -61,11 +39,11 @@ function replaceInMember (obj, member, oldName, newName) {
 }
 
 function updateNotice (name) {
-  log(COL1, 'updated', name, true)
+  log(defaultColors.COL1, 'updated', name, true)
 }
 
 function log (col, type, msg, check) {
-  console.log(`${col}${type} ${RESET} ${msg} ${check ? COL2 : COL4}${check ? '✓' : 'x'}${RESET} `)
+  console.log(`${col}${type} ${defaultColors.RESET} ${msg} ${check ? defaultColors.COL2 : defaultColors.COL4}${check ? '✓' : 'x'}${defaultColors.RESET} `)
 }
 
 function snakeToCamel (word) {
@@ -79,4 +57,14 @@ function snakeToCamel (word) {
     }
   }
   return res
+}
+
+module.exports = {
+  replaceNameInFile,
+  updatePackageJSON,
+  replaceInTree,
+  replaceInMember,
+  updateNotice,
+  log,
+  snakeToCamel
 }
