@@ -13,6 +13,8 @@
 //     }))
 // }
 
+// TODO: add init for each type of template and extend function collection here
+
 const functions = {
   "element-init": require('./functions/init/element-init.js'),
   render: require('./functions/render.js'),
