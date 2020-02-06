@@ -5,12 +5,8 @@ const snakeToCamel = require('./helpers/snake-to-camel.js')
 const log = require('./helpers/log.js')
 
 module.exports = function elementInit (wd, baseName, name) {
-  const jsonData = {
-    baseName,
-    name
-  }
-  const fileData = [
-    {
+  const jsonData = { baseName, name }
+  const fileData = [{
       baseName,
       name,
       paths: ['test/basic.test.js', 'README.md', 'example/index.html', `${baseName}.js`]
@@ -19,12 +15,8 @@ module.exports = function elementInit (wd, baseName, name) {
       baseName: snakeToCamel(baseName),
       name: snakeToCamel(name),
       paths: [`${baseName}.js`]
-    }
-  ]
-  const initData = {
-    jsonData,
-    fileData
-  }
+    }]
+  const initData = { jsonData, fileData }
   initFiles(wd, initData)
   if (fs.existsSync(`${baseName}.js`)) {
     fs.renameSync(`${baseName}.js`, name + '.js')
