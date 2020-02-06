@@ -7,15 +7,15 @@ const log = require('./helpers/log.js')
 module.exports = function elementInit (wd, baseName, name) {
   const jsonData = { baseName, name }
   const fileData = [{
-      baseName,
-      name,
-      paths: ['test/basic.test.js', 'README.md', 'example/index.html', `${baseName}.js`]
-    },
-    {
-      baseName: snakeToCamel(baseName),
-      name: snakeToCamel(name),
-      paths: [`${baseName}.js`]
-    }]
+    baseName,
+    name,
+    paths: ['test/basic.test.js', 'README.md', 'example/index.html', `${baseName}.js`]
+  },
+  {
+    baseName: snakeToCamel(baseName),
+    name: snakeToCamel(name),
+    paths: [`${baseName}.js`]
+  }]
   const initData = { jsonData, fileData }
   initFiles(wd, initData)
   if (fs.existsSync(`${baseName}.js`)) {
