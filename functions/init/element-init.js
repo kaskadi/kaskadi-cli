@@ -5,7 +5,7 @@ const replaceNameInFile = require('./helpers/replace-name-in-file.js')
 const snakeToCamel = require('./helpers/snake-to-camel.js')
 const log = require('./helpers/log.js')
 
-module.exports = function init () {
+module.exports = function elementInit () {
   const wd = process.cwd().split('/')
   const name = wd[wd.length - 1]
   const baseName = 'template-kaskadi-element'
@@ -20,5 +20,5 @@ module.exports = function init () {
   } else {
     log(defaultColors.COL4, 'error', `${baseName}.js not found`, false)
   }
-  log(defaultColors.COL1, 'rename', `${baseName}.js to ${defaultColors.COL3}${name}.js`, true)
+  log(defaultColors.COL1, 'rename', `${baseName}.js to ${defaultColors.COL1}${name}.js`, true)
 }
