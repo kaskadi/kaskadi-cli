@@ -6,6 +6,8 @@ on:
       - 'release/**'
     paths:
       - 'kaskadi.js'
+      - 'test/**'
+      - '.github/workflows/testing.yml'
       - 'functions/**'
 jobs:
   coverage:
