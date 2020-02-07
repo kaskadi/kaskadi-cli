@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const color = require('../functions/colors/colors.js')
+const color = require('@kaskadi/better-colors')
 const red = '\u001b[38;2;255;0;0m\u001b[10m'
 const redbg = '\u001b[48;2;255;0;0m\u001b[10m'
 describe('the color function', () => {
