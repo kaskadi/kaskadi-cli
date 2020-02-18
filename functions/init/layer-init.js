@@ -9,17 +9,17 @@ module.exports = function lambdaInit (wd, baseName, name) {
     paths: ['README.md', 'serverless.yml']
   },
   {
-    baseName: 'TemplateKaskadiLayer',
+    baseName: snakeToCamel(baseName),
     name: snakeToCamel(name),
     paths: ['serverless.yml']
   },
   {
-    baseName: 'TemplateKaskadiLayerLambdaLayer',
+    baseName: `${snakeToCamel(baseName)}LambdaLayer`,
     name: `${snakeToCamel(name)}LambdaLayer`,
     paths: ['serverless.yml']
   },
   {
-    baseName: 'TemplateKaskadiLayerArn',
+    baseName: `${snakeToCamel(baseName)}Arn`,
     name: `${snakeToCamel(name)}Arn`,
     paths: ['serverless.yml']
   }]

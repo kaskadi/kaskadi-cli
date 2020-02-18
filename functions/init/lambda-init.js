@@ -7,6 +7,11 @@ module.exports = function lambdaInit (wd, baseName, name) {
     baseName,
     name,
     paths: ['README.md', 'serverless.yml']
+  },
+  {
+    baseName: snakeToCamel(baseName),
+    name: snakeToCamel(name),
+    paths: ['serverless.yml']
   }]
   const initData = { jsonData, fileData }
   initFiles(wd, initData)
