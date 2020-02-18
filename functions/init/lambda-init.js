@@ -1,5 +1,6 @@
 const initFiles = require('./helpers/init-files.js')
 const renameFiles = require('./helpers/rename-files.js')
+const snakeToCamel = require('./helpers/snake-to-camel.js')
 
 module.exports = function lambdaInit (wd, baseName, name) {
   const jsonData = { baseName, name }
