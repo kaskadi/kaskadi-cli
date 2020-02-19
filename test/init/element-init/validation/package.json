@@ -1,8 +1,8 @@
 {
-  "name": "template-kaskadi-element",
+  "name": "working-data",
   "version": "1.0.0",
   "description": "",
-  "main": "template-kaskadi-element.js",
+  "main": "working-data.js",
   "directories": {
     "example": "example",
     "test": "test"
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaskadi/template-kaskadi-element.git"
+    "url": "git+https://github.com/kaskadi/working-data.git"
   },
   "keywords": [],
   "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
@@ -28,19 +28,19 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaskadi/template-kaskadi-element/issues"
+    "url": "https://github.com/kaskadi/working-data/issues"
   },
-  "homepage": "https://github.com/kaskadi/template-kaskadi-element#readme",
+  "homepage": "https://github.com/kaskadi/working-data#readme",
   "kaskadi": {
     "s3-push": {
       "files": [
         {
-          "src": "template-kaskadi-element.js",
-          "dest": "modules/@kaskadi/template-kaskadi-element/{branch}template-kaskadi-element.js"
+          "src": "working-data.js",
+          "dest": "modules/@kaskadi/working-data/{branch}working-data.js"
         },
         {
           "src": "example/index.html",
-          "dest": "modules/@kaskadi/template-kaskadi-element/{branch}example/index.html"
+          "dest": "modules/@kaskadi/working-data/{branch}example/index.html"
         }
       ]
     }

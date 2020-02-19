@@ -23,7 +23,8 @@ describe('replace-name-in-file helper', () => {
   })
   it(`should replace ${oldName} by ${newName} in ${fileName}`, () => {
     const file = fs.readFileSync(`${workingDataPath}/${fileName}`, 'utf8').trim()
-    file.should.equal(newName)
+    const validationFile = fs.readFileSync(`${root}/validation/${fileName}`, 'utf8').trim()
+    file.should.equal(validationFile)
   })
   it('should log an error message if the file is not found', () => {
     const notFoundFile = `${workingDataPath}/hello`
