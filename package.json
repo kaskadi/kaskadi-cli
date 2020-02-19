@@ -7,7 +7,7 @@
     "kaskadi": "./kaskadi.js"
   },
   "scripts": {
-    "test": "standard --fix && mocha test/*.test.js --require test/mocha-color-setter.js",
+    "test": "standard --fix && mocha test/*/*/*.test.js --require test/mocha-color-setter.js",
     "coverage": "nyc npm run test"
   },
   "repository": {
@@ -46,7 +46,7 @@
   },
   "standard": {
     "ignore": [
-      "/test/data/**"
+      "/test/*/*/data/**"
     ]
   }
 }

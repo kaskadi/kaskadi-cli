@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const snakeToCamel = require('../functions/init/helpers/snake-to-camel.js')
+const snakeToCamel = require('../../../functions/init/helpers/snake-to-camel.js')
 const chai = require('chai')
 chai.should()
 
