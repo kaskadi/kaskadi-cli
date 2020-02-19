@@ -29,6 +29,7 @@
     "puppeteer": "^2.0.0"
   },
   "devDependencies": {
+    "capture-console": "^1.0.1",
     "chai": "^4.2.0",
     "mocha": "^7.0.0",
     "ncp": "^2.0.0",

@@ -1,7 +1,9 @@
 /* eslint-env mocha */
 const renameFiles = require('../../../functions/init/helpers/rename-files.js')
-const fs = require('fs')
+const expectOut = require('../../expect-out.js')
+const captOut = require('../../capt-out.js')
 const copyData = require('../../copy-data.js')
+const fs = require('fs')
 const rimraf = require('rimraf')
 const chai = require('chai')
 chai.should()
@@ -36,6 +38,17 @@ describe('rename-files helper', () => {
       oldFileExists.should.equal(false)
       newFileExists.should.equal(true)
     })
+  })
+  it('should log an error message when a file is not found', () => {
+    const notExistFiles = [
+      {
+        baseName: 'file-10',
+        name: 'file-10-test'
+      }
+    ]
+    const expectedOutput = expectOut('COL4', 'error', `${notExistFiles[0].baseName} not found`, false)
+    const stdout = captOut(renameFiles, workingDataPath, notExistFiles)
+    stdout.should.equal(expectedOutput)
   })
   after(() => {
     rimraf.sync(workingDataPath)
