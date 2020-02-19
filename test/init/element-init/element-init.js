@@ -36,7 +36,7 @@ describe('#elementInit()', () => {
   })
   describe(`should rename all occurences of ${baseName} to ${folderName} in package.json`, () => {
     let pjson
-    beforeEach(() => {
+    before(() => {
       const file = fs.readFileSync(`${workingDataPath}/package.json`, 'utf8')
       pjson = JSON.parse(file)
     })
