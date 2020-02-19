@@ -11,7 +11,7 @@ chai.should()
 const root = 'test/init/init/'
 
 describe('init test', () => {
-  it('should call initElement when passed element as argument', async () => {
+  describe('should call initElement when passed element as argument', async () => {
     await copyData(`${root}element-init-data/data`, `${root}element-init-data/working-data`)
     process.chdir(`${root}element-init-data/working-data`)
     init(['element'])
