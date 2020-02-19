@@ -1,0 +1,28 @@
+{
+  "name": "template-kaskadi-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serverless.yml",
+  "scripts": {
+    "test": "echo \"No test script defined.\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaskadi/template-kaskadi-api.git"
+  },
+  "keywords": [],
+  "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
+  "contributors": [
+    "Holger Will <h.will@klimapartner.de>",
+    "Alexis Lemaire <a.lemaire@klimapartner.de>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaskadi/template-kaskadi-api/issues"
+  },
+  "homepage": "https://github.com/kaskadi/template-kaskadi-api#readme",
+  "devDependencies": {
+    "serverless-aws-documentation": "^1.1.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,24 @@
+{
+  "name": "template-kaskadi-layer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serverless.yml",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaskadi/template-kaskadi-layer.git"
+  },
+  "keywords": [],
+  "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
+  "contributors": [
+    "Holger Will <h.will@klimapartner.de>",
+    "Alexis Lemaire <a.lemaire@klimapartner.de>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaskadi/template-kaskadi-layer/issues"
+  },
+  "homepage": "https://github.com/kaskadi/template-kaskadi-layer#readme"
+}

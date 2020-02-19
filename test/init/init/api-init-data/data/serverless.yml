@@ -1,0 +1,60 @@
+service:
+  name: template-kaskadi-api
+
+plugins:
+  - serverless-aws-documentation
+
+custom:
+  documentation:
+    api:
+      info:
+        version: 0.0.1
+        title: ${self:service.name}
+        description: Template API
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stackName: ${self:service.name}-stack
+  stage: ${opt:stage, 'prod'}
+  region: ${opt:region, 'eu-central-1'}
+  deploymentBucket:
+    name: ${env:SLS_DEPLOY_BUCKET}
+  deploymentPrefix: ${self:service.name}
+
+resources:
+  Resources:
+    # The ID of this resources needs to be ApiGatewayRestApi because that's the way the serverless-aws-documentation plugin is refering to it
+    ApiGatewayRestApi:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: ${self:service.name}
+    # Uncomment the block below if you want to add an API Gateway cognito authorizer
+    # CognitoAuthorizer:
+    #   DependsOn:
+    #     - ApiGatewayRestApi
+    #   Type: AWS::ApiGateway::Authorizer
+    #   Properties:
+    #     Name: cognito-authorizer
+    #     IdentitySource: method.request.header.Authorization
+    #     RestApiId:
+    #       Ref: ApiGatewayRestApi
+    #     Type: COGNITO_USER_POOLS
+    #     ProviderARNs:
+    #       - # ARN of your Cognito User Pool
+  Outputs:
+    RestAPIGatewayId:
+      Value:
+        Ref: ApiGatewayRestApi
+      Export:
+        Name: RestAPIGatewayId
+    RestAPIGatewayRootResourceId:
+      Value: !GetAtt ApiGatewayRestApi.RootResourceId
+      Export:
+        Name: RestAPIGatewayRootResourceId
+    # Uncomment the block below in order to export the ID of your authorizer to reuse it in your Lambdas
+    # CognitoAuthorizerId:
+    #   Value:
+    #     Ref: CognitoAuthorizer
+    #   Export:
+    #     Name: CognitoAuthorizerId

@@ -1,0 +1,30 @@
+service:
+  name: template-kaskadi-layer
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stackName: ${self:service.name}-stack
+  stage: ${opt:stage, 'prod'}
+  region: ${opt:region, 'eu-central-1'}
+  deploymentBucket:
+    name: kaskadi-serverless-deployment-bucket
+  deploymentPrefix: ${self:service.name}
+
+layers:
+  TemplateKaskadiLayer:
+    path: layer
+    name: ${self:service.name}
+    description: # your description here
+    compatibleRuntimes:
+      - nodejs10.x
+      - nodejs12.x
+    licenseInfo: MIT
+
+resources:
+  Outputs:
+    TemplateKaskadiLayerArn:
+      Value:
+        Ref: TemplateKaskadiLayerLambdaLayer
+      Export:
+        Name: TemplateKaskadiLayerArn
