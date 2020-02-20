@@ -39,8 +39,8 @@ module.exports = (root, baseName, folderName, baseClassName, className) => {
       const validationFile = fs.readFileSync(`${root}validation/${folderName}.js`, 'utf8').trim()
       file.should.equal(validationFile)
     })
-    it('should not throw on second run', () => {
-      elementInit.should.not.throw(`${root}/working-data`, baseName, folderName)
-    })
+  })
+  it('should not throw on second run', () => {
+    elementInit.should.not.throw(`${root}/working-data`, baseName, folderName)
   })
 }

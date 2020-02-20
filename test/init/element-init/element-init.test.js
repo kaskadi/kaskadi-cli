@@ -13,10 +13,14 @@ const root = 'test/init/element-init/'
 const dataPath = `${root}data`
 const workingDataPath = `${root}${folderName}`
 
-describe('element-init function', async () => {
-  await copyData(dataPath, workingDataPath)
-  const name = workingDataPath.split('/')[workingDataPath.split('/').length - 1]
-  elementInit(workingDataPath, baseName, name)
+describe('element-init function', () => {
+  before(async () => {
+    await copyData(dataPath, workingDataPath)
+    const name = workingDataPath.split('/')[workingDataPath.split('/').length - 1]
+    elementInit(workingDataPath, baseName, name)
+  })
   tests(root, baseName, folderName, baseClassName, className)
-  rimraf.sync(workingDataPath)
+  after(() => {
+    rimraf.sync(workingDataPath)
+  })
 })

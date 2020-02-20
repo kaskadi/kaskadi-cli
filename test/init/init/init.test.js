@@ -10,14 +10,18 @@ chai.should()
 
 const root = 'test/init/init/'
 
-describe('init test', () => {
-  describe('should call initElement when passed element as argument', async () => {
-    await copyData(`${root}element-init-data/data`, `${root}element-init-data/working-data`)
-    process.chdir(`${root}element-init-data/working-data`)
-    init(['element'])
-    process.chdir('../../../../../')
+describe('init function', () => {
+  describe('should call initElement when passed element as argument', () => {
+    before(async () => {
+      await copyData(`${root}element-init-data/data`, `${root}element-init-data/working-data`)
+      process.chdir(`${root}element-init-data/working-data`)
+      init(['element'])
+      process.chdir('../../../../../')
+    })
     elemInitTests(`${root}element-init-data/`, 'kaskadi-template-element', 'working-data', 'KaskadiTemplateElement', 'WorkingData')
-    rimraf.sync(`${root}element-init-data/working-data`)
+    after(() => {
+      rimraf.sync(`${root}element-init-data/working-data`)
+    })
   })
   it('should log an error message when passed an invalid argument', () => {
     const col = 'COL4'
