@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/code--style-standard-blue)
 ![](https://img.shields.io/github/license/kaskadi/kaskadi-cli?color=blue)
 
-![](https://img.shields.io/github/workflow/status/kaskadi/kaskadi-cli/testing?label=test)
+![](https://img.shields.io/github/workflow/status/kaskadi/kaskadi-cli/testing?label=test&logo=mocha)
 ![](https://img.shields.io/github/workflow/status/kaskadi/kaskadi-cli/publish?label=published&logo=npm)
 
 **CodeClimate**
