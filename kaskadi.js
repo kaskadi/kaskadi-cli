@@ -9,3 +9,5 @@ const functions = {
 }
 
 functions[process.argv[2]](process.argv.splice(3))
+
+// test
