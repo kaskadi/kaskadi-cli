@@ -16,6 +16,11 @@ module.exports = (root, baseName, folderName) => {
     const validationFile = fs.readFileSync(`${root}validation/action.yml`, 'utf8').trim()
     file.should.equal(validationFile)
   })
+  it(`should rename all occurences of ${baseName} to ${folderName} in test/index.test.js`, () => {
+    const file = fs.readFileSync(`${root}working-data/test/index.test.js`, 'utf8').trim()
+    const validationFile = fs.readFileSync(`${root}validation/test/index.test.js`, 'utf8').trim()
+    file.should.equal(validationFile)
+  })
   it(`should rename all occurences of ${baseName} to ${folderName} in package.json`, () => {
     const pjson = JSON.parse(fs.readFileSync(`${root}working-data/package.json`, 'utf8'))
     const pjsonValid = JSON.parse(fs.readFileSync(`${root}validation/package.json`, 'utf8'))

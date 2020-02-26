@@ -5,7 +5,7 @@ module.exports = function actionInit (wd, baseName, name) {
   const fileData = [{
     baseName,
     name,
-    paths: ['action.yml', 'README.md']
+    paths: ['action.yml', 'README.md', 'test/index.test.js']
   }]
   const initData = { jsonData, fileData }
   initFiles(wd, initData)
