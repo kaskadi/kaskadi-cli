@@ -11,11 +11,6 @@ module.exports = (root, baseName, baseCamelName, folderName, camelName) => {
     const validationFile = fs.readFileSync(`${root}validation/README.md`, 'utf8').trim()
     file.should.equal(validationFile)
   })
-  it(`should rename all occurences of ${baseName} to ${folderName} in deploy.yml`, () => {
-    const file = fs.readFileSync(`${root}working-data/.github/workflows/deploy.yml`, 'utf8').trim()
-    const validationFile = fs.readFileSync(`${root}validation/.github/workflows/deploy.yml`, 'utf8').trim()
-    file.should.equal(validationFile)
-  })
   it(`should rename all occurences of ${baseName} and ${baseCamelName} to ${folderName} and ${camelName} in serverless.yml`, () => {
     const file = fs.readFileSync(`${root}working-data/serverless.yml`, 'utf8').trim()
     const validationFile = fs.readFileSync(`${root}validation/serverless.yml`, 'utf8').trim()
