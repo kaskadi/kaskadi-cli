@@ -11,9 +11,9 @@ module.exports = (root, baseName, folderName) => {
     const validationFile = fs.readFileSync(`${root}validation/README.md`, 'utf8').trim()
     file.should.equal(validationFile)
   })
-  it(`should rename all occurences of ${baseName} to ${folderName} and replace "Template API" by "# your API description here" in serverless.yml`, () => {
-    const file = fs.readFileSync(`${root}working-data/serverless.yml`, 'utf8').trim()
-    const validationFile = fs.readFileSync(`${root}validation/serverless.yml`, 'utf8').trim()
+  it(`should rename all occurences of ${baseName} to ${folderName} and replace "Template API" by "# your API description here" in serverless.json`, () => {
+    const file = fs.readFileSync(`${root}working-data/serverless.json`, 'utf8').trim()
+    const validationFile = fs.readFileSync(`${root}validation/serverless.json`, 'utf8').trim()
     file.should.equal(validationFile)
   })
   it(`should rename all occurences of ${baseName} to ${folderName} in package.json`, () => {

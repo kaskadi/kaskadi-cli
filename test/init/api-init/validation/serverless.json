@@ -1,0 +1,48 @@
+{
+  "service": {
+    "name": "working-data"
+  },
+  "package": {
+    "individually": true,
+    "exclude": [
+      "**/**"
+    ]
+  },
+  "plugins": [
+    "serverless-aws-documentation"
+  ],
+  "custom": {
+    "documentation": {
+      "api": {
+        "info": {
+          "version": "1.0.0",
+          "title": "${self:service.name}",
+          "description": "your API description here"
+        }
+      }
+    }
+  },
+  "provider": {
+    "name": "aws",
+    "runtime": "nodejs12.x",
+    "stackName": "${self:service.name}-stack",
+    "apiName": "${self:service.name}",
+    "stage": "${opt:stage, 'prod'}",
+    "region": "eu-central-1",
+    "deploymentBucket": {
+      "name": "kaskadi-serverless-deployment-bucket"
+    },
+    "tags": {
+      "app": "your-app-name",
+      "service": "${self:service.name}",
+      "logical-unit": "api-logical-unit",
+      "type": "api, s3, sns, etc."
+    }
+  },
+  "functions": {
+    "HelloWorld": "${file(./lambdas/hello-world/serverless.json)}"
+  },
+  "layers": {
+    "ApiLayer": "${file(./api-layer/serverless.json)}"
+  }
+}

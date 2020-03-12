@@ -13,67 +13,43 @@ const chai = require('chai')
 chai.should()
 
 const root = 'test/init/init/'
+const initRoot = 'test/init/'
 
 describe('init function', () => {
   describe('calls element-init when passed element as argument', () => {
     before(async () => {
-      await copyData(`${root}element-init-data/data`, `${root}element-init-data/working-data`)
-      process.chdir(`${root}element-init-data/working-data`)
-      init(['element'])
-      process.chdir('../../../../../')
+      await beforeHandler('element')
     })
-    elemInitTests(`${root}element-init-data/`, 'kaskadi-template-element', 'working-data', 'KaskadiTemplateElement', 'WorkingData')
-    after(() => {
-      rimraf.sync(`${root}element-init-data/working-data`)
-    })
+    elemInitTests(root, 'kaskadi-template-element', 'working-data', 'KaskadiTemplateElement', 'WorkingData')
+    after(afterHandler)
   })
   describe('calls action-init when passed action as argument', () => {
     before(async () => {
-      await copyData(`${root}action-init-data/data`, `${root}action-init-data/working-data`)
-      process.chdir(`${root}action-init-data/working-data`)
-      init(['action'])
-      process.chdir('../../../../../')
+      await beforeHandler('action')
     })
-    actionInitTests(`${root}action-init-data/`, 'template-action', 'working-data')
-    after(() => {
-      rimraf.sync(`${root}action-init-data/working-data`)
-    })
+    actionInitTests(root, 'template-action', 'working-data')
+    after(afterHandler)
   })
   describe('calls api-init when passed api as argument', () => {
     before(async () => {
-      await copyData(`${root}api-init-data/data`, `${root}api-init-data/working-data`)
-      process.chdir(`${root}api-init-data/working-data`)
-      init(['api'])
-      process.chdir('../../../../../')
+      await beforeHandler('api')
     })
-    apiInitTests(`${root}api-init-data/`, 'template-action', 'working-data')
-    after(() => {
-      rimraf.sync(`${root}api-init-data/working-data`)
-    })
+    apiInitTests(root, 'template-action', 'working-data')
+    after(afterHandler)
   })
   describe('calls lambda-init when passed lambda as argument', () => {
     before(async () => {
-      await copyData(`${root}lambda-init-data/data`, `${root}lambda-init-data/working-data`)
-      process.chdir(`${root}lambda-init-data/working-data`)
-      init(['lambda'])
-      process.chdir('../../../../../')
+      await beforeHandler('lambda')
     })
-    lambdaInitTests(`${root}lambda-init-data/`, 'template-kaskadi-lambda', 'TemplateKaskadi', 'working-data', 'WorkingData')
-    after(() => {
-      rimraf.sync(`${root}lambda-init-data/working-data`)
-    })
+    lambdaInitTests(root, 'template-kaskadi-lambda', 'TemplateKaskadi', 'working-data', 'WorkingData')
+    after(afterHandler)
   })
   describe('calls layer-init when passed layer as argument', () => {
     before(async () => {
-      await copyData(`${root}layer-init-data/data`, `${root}layer-init-data/working-data`)
-      process.chdir(`${root}layer-init-data/working-data`)
-      init(['layer'])
-      process.chdir('../../../../../')
+      await beforeHandler('layer')
     })
-    layerInitTests(`${root}layer-init-data/`, 'template-kaskadi-layer', 'TemplateKaskadiLayer', 'working-data', 'WorkingData')
-    after(() => {
-      rimraf.sync(`${root}layer-init-data/working-data`)
-    })
+    layerInitTests(root, 'template-kaskadi-layer', 'TemplateKaskadiLayer', 'working-data', 'WorkingData')
+    after(afterHandler)
   })
   describe('does not perform any operation if passed an invalid argument', () => {
     it('should log an error message when passed an invalid argument', () => {
@@ -87,3 +63,19 @@ describe('init function', () => {
     })
   })
 })
+
+async function beforeHandler (type) {
+  await copyData(`${initRoot}${type}-init/data`, `${root}data`)
+  await copyData(`${initRoot}${type}-init/validation`, `${root}validation`)
+  await copyData(`${root}data`, `${root}working-data`)
+  process.chdir(`${root}working-data`)
+  init([type])
+  const repo = `${root}working-data`.split('/').filter(folder => folder).map(folder => '..').join('/') + '/'
+  process.chdir(repo)
+}
+
+function afterHandler () {
+  rimraf.sync(`${root}data`)
+  rimraf.sync(`${root}validation`)
+  rimraf.sync(`${root}working-data`)
+}

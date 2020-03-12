@@ -10,17 +10,18 @@ package:
 
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs12.x
   stackName: ${self:service.name}-stack
   stage: ${opt:stage, 'prod'}
-  region: ${opt:region, 'eu-central-1'}
+  region: eu-central-1
   deploymentBucket:
-    name: ${env:SLS_DEPLOY_BUCKET}
-  deploymentPrefix: ${self:service.name}
-  # uncomment the following if you need to link to an API. Replace with the proper exported value from your API
-  # apiGateway:
-  #   restApiId: !ImportValue RestAPIGatewayId
-  #   restApiRootResourceId: !ImportValue RestAPIGatewayRootResourceId
+    name: kaskadi-serverless-deployment-bucket
+  # update this section to use proper tags for your lambda
+  tags:
+    app: your-app-name,
+    service: ${self:service.name},
+    logical-unit: api-logical-unit,
+    type: 's3, sns, etc.'
 
 functions:
   TemplateKaskadi:
