@@ -27,6 +27,8 @@ functions:
   WorkingData:
     handler: working-data.handler
     name: ${self:service.name}
+    layers:
+      - !Ref LambdaLayer
     package:
       include:
         - 'working-data.js'
@@ -37,3 +39,13 @@ functions:
           method: get
           path: hello
           cors: true
+
+layers:
+  LambdaLayer:
+    path: layer
+    name: ${self:service.name}-layer
+    description: Layer for ${self:service.name}
+    compatibleRuntimes:
+      - nodejs10.x
+      - nodejs12.x
+    licenseInfo: MIT
