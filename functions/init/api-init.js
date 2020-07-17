@@ -5,12 +5,12 @@ module.exports = function actionInit (wd, baseName, name) {
   const fileData = [{
     baseName,
     name,
-    paths: ['README.md', 'serverless.json']
+    paths: ['README.md', 'serverless.yml']
   },
   {
     baseName: 'Template API',
     name: 'your API description here',
-    paths: ['serverless.json']
+    paths: ['serverless.yml']
   }]
   const initData = { jsonData, fileData }
   initFiles(wd, initData)
