@@ -1,39 +1,33 @@
-const elementInit = require('./element-init.js')
-const actionInit = require('./action-init.js')
-const apiInit = require('./api-init.js')
-const lambdaInit = require('./lambda-init.js')
-const layerInit = require('./layer-init.js')
-const defaultColors = require('./default-colors.js')
-const log = require('./helpers/log.js')
+const opTypeData = {
+  element: {
+    baseName: 'template-kaskadi-element',
+    handler: require('./element-init.js')
+  },
+  action: {
+    baseName: 'template-action',
+    handler: require('./action-init.js')
+  },
+  api: {
+    baseName: 'template-kaskadi-api',
+    handler: require('./api-init.js')
+  },
+  lambda: {
+    baseName: 'template-kaskadi-lambda',
+    handler: require('./lambda-init.js')
+  },
+  layer: {
+    baseName: 'template-kaskadi-layer',
+    handler: require('./layer-init.js')
+  }
+}
 
-module.exports = function init (args) {
+module.exports = args => {
   const opType = args[0]
   const wd = process.cwd()
   const name = wd.split('/')[wd.split('/').length - 1]
-  let baseName = ''
-  switch (opType) {
-    case 'element':
-      baseName = 'template-kaskadi-element'
-      elementInit(wd, baseName, name)
-      break
-    case 'action':
-      baseName = 'template-action'
-      actionInit(wd, baseName, name)
-      break
-    case 'api':
-      baseName = 'template-kaskadi-api'
-      apiInit(wd, baseName, name)
-      break
-    case 'lambda':
-      baseName = 'template-kaskadi-lambda'
-      lambdaInit(wd, baseName, name)
-      break
-    case 'layer':
-      baseName = 'template-kaskadi-layer'
-      layerInit(wd, baseName, name)
-      break
-    default:
-      log(defaultColors.COL4, 'error', 'no operation specified, aborting')
-      break
+  if (!opTypeData[opType]) {
+    require('./helpers/log.js')(require('./default-colors.js').COL4, 'error', 'No operation specified, aborting...')
+  } else {
+    opTypeData[opType].handler(wd, opTypeData[opType].baseName, name)
   }
 }

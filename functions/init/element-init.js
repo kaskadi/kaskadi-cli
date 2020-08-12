@@ -3,18 +3,16 @@ const renameFiles = require('./helpers/rename-files.js')
 const snakeToCamel = require('./helpers/snake-to-camel.js')
 
 module.exports = function elementInit (wd, baseName, name) {
-  const jsonData = { baseName, name }
-  const fileData = [{
+  const initData = [{
     baseName,
     name,
-    paths: ['test/basic.test.js', 'README.md', 'example/index.html', `${baseName}.js`]
+    paths: ['package.json', 'test/basic.test.js', 'README.md', 'example/index.html', `${baseName}.js`]
   },
   {
     baseName: snakeToCamel(baseName),
     name: snakeToCamel(name),
     paths: [`${baseName}.js`]
   }]
-  const initData = { jsonData, fileData }
   initFiles(wd, initData)
   const files = [{
     baseName: `${baseName}.js`,

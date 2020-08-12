@@ -1,17 +1,15 @@
 const initFiles = require('./helpers/init-files.js')
 
 module.exports = function actionInit (wd, baseName, name) {
-  const jsonData = { baseName, name }
-  const fileData = [{
+  const initData = [{
     baseName,
     name,
-    paths: ['README.md', 'serverless.yml', 'layer/nodejs/package.json']
+    paths: ['package.json', 'README.md', 'serverless.yml', 'layer/nodejs/package.json']
   },
   {
     baseName: 'Template API',
     name: 'your API description here',
     paths: ['serverless.yml']
   }]
-  const initData = { jsonData, fileData }
   initFiles(wd, initData)
 }
