@@ -1,14 +1,15 @@
 name: testing + coverage
 on:
-  push:
+  pull_request:
     branches:
       - 'master'
-      - 'release/**'
+      - 'dev'
+    types: [opened, reopened, edited, synchronize]
     paths:
       - 'kaskadi.js'
       - 'test/**'
-      - '.github/workflows/testing.yml'
       - 'functions/**'
+      - 'package.json'
 jobs:
   coverage:
     runs-on: ubuntu-latest

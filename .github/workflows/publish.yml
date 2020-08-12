@@ -7,6 +7,7 @@ on:
     paths:
       - 'kaskadi.js'
       - 'functions/**'
+      - 'package.json'
 jobs:
   publish:
     runs-on: ubuntu-latest
