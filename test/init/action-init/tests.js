@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const actionInit = require('../../../functions/init/action-init.js')
+const actionInit = require('../../../functions/init/init-handlers/action-init.js')
 const fs = require('fs')
 const deepEqual = require('deep-equal')
 const chai = require('chai')

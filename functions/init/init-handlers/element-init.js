@@ -1,6 +1,6 @@
-const initFiles = require('./helpers/init-files.js')
-const renameFiles = require('./helpers/rename-files.js')
-const snakeToCamel = require('./helpers/snake-to-camel.js')
+const initFiles = require('../helpers/init-files.js')
+const renameFiles = require('../helpers/rename-files.js')
+const snakeToCamel = require('../helpers/snake-to-camel.js')
 
 module.exports = function elementInit (wd, baseName, name) {
   const initData = [{

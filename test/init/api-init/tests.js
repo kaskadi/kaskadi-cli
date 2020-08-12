@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const apiInit = require('../../../functions/init/api-init.js')
+const apiInit = require('../../../functions/init/init-handlers/api-init.js')
 const fs = require('fs')
 const deepEqual = require('deep-equal')
 const chai = require('chai')

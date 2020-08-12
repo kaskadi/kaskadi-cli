@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const apiInit = require('../../../functions/init/api-init.js')
+const apiInit = require('../../../functions/init/init-handlers/api-init.js')
 const copyData = require('../../copy-data.js')
 const rimraf = require('rimraf')
 const tests = require('./tests.js')

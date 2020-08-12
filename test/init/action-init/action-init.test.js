@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const actionInit = require('../../../functions/init/action-init.js')
+const actionInit = require('../../../functions/init/init-handlers/action-init.js')
 const copyData = require('../../copy-data.js')
 const rimraf = require('rimraf')
 const tests = require('./tests.js')

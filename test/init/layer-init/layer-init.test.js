@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const layerInit = require('../../../functions/init/layer-init.js')
+const layerInit = require('../../../functions/init/init-handlers/layer-init.js')
 const copyData = require('../../copy-data.js')
 const rimraf = require('rimraf')
 const tests = require('./tests.js')

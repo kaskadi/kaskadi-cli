@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const lambdaInit = require('../../../functions/init/lambda-init.js')
+const lambdaInit = require('../../../functions/init/init-handlers/lambda-init.js')
 const fs = require('fs')
 const deepEqual = require('deep-equal')
 const chai = require('chai')

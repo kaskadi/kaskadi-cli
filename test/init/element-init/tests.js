@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const elementInit = require('../../../functions/init/element-init.js')
+const elementInit = require('../../../functions/init/init-handlers/element-init.js')
 const fs = require('fs')
 const deepEqual = require('deep-equal')
 const chai = require('chai')

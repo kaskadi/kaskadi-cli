@@ -1,5 +1,5 @@
-const initFiles = require('./helpers/init-files.js')
-const snakeToCamel = require('./helpers/snake-to-camel.js')
+const initFiles = require('../helpers/init-files.js')
+const snakeToCamel = require('../helpers/snake-to-camel.js')
 
 module.exports = function lambdaInit (wd, baseName, name) {
   const initData = [{

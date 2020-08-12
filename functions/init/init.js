@@ -1,23 +1,23 @@
 const opTypeData = {
   element: {
     baseName: 'template-kaskadi-element',
-    handler: require('./element-init.js')
+    handler: require('./init-handlers/element-init.js')
   },
   action: {
     baseName: 'template-action',
-    handler: require('./action-init.js')
+    handler: require('./init-handlers/action-init.js')
   },
   api: {
     baseName: 'template-kaskadi-api',
-    handler: require('./api-init.js')
+    handler: require('./init-handlers/api-init.js')
   },
   lambda: {
     baseName: 'template-kaskadi-lambda',
-    handler: require('./lambda-init.js')
+    handler: require('./init-handlers/lambda-init.js')
   },
   layer: {
     baseName: 'template-kaskadi-layer',
-    handler: require('./layer-init.js')
+    handler: require('./init-handlers/layer-init.js')
   }
 }
 

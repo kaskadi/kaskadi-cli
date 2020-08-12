@@ -1,4 +1,4 @@
-const initFiles = require('./helpers/init-files.js')
+const initFiles = require('../helpers/init-files.js')
 
 module.exports = function actionInit (wd, baseName, name) {
   const initData = [{

@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const lambdaInit = require('../../../functions/init/lambda-init.js')
+const lambdaInit = require('../../../functions/init/init-handlers/lambda-init.js')
 const copyData = require('../../copy-data.js')
 const rimraf = require('rimraf')
 const tests = require('./tests.js')
