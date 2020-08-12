@@ -22,6 +22,12 @@ module.exports = (root, baseName, folderName) => {
     const test = deepEqual(pjson, pjsonValid)
     test.should.equal(true)
   })
+  it(`should rename all occurences of ${baseName} to ${folderName} in layer/nodejs/package.json`, () => {
+    const pjson = JSON.parse(fs.readFileSync(`${root}working-data/layer/nodejs/package.json`, 'utf8'))
+    const pjsonValid = JSON.parse(fs.readFileSync(`${root}validation/layer/nodejs/package.json`, 'utf8'))
+    const test = deepEqual(pjson, pjsonValid)
+    test.should.equal(true)
+  })
   it('should not throw on second run', () => {
     apiInit.should.not.throw(`${root}working-data`, baseName, folderName)
   })

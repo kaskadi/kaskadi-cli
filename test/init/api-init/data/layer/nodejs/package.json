@@ -1,0 +1,16 @@
+{
+  "name": "template-kaskadi-api-layer",
+  "version": "1.0.0",
+  "description": "Layer for template-kaskadi-api",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
+  "contributors": [
+    "Holger Will <h.will@klimapartner.de>",
+    "Alexis Lemaire <a.lemaire@klimapartner.de>"
+  ],
+  "license": "MIT"
+}

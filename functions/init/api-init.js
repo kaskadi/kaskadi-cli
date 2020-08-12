@@ -5,7 +5,7 @@ module.exports = function actionInit (wd, baseName, name) {
   const fileData = [{
     baseName,
     name,
-    paths: ['README.md', 'serverless.yml']
+    paths: ['README.md', 'serverless.yml', 'layer/nodejs/package.json']
   },
   {
     baseName: 'Template API',
