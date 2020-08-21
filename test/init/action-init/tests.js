@@ -27,9 +27,9 @@ module.exports = (root, baseName, folderName) => {
     const test = deepEqual(pjson, pjsonValid)
     test.should.equal(true)
   })
-  it(`should rename all occurences of ${baseName} to ${folderName} in helpers/install-dependencies.js`, () => {
-    const pjson = fs.readFileSync(`${root}working-data/helpers/install-dependencies.js`, 'utf8')
-    const pjsonValid = fs.readFileSync(`${root}validation/helpers/install-dependencies.js`, 'utf8')
+  it(`should rename all occurences of ${baseName} to ${folderName} in dist/pre.js`, () => {
+    const pjson = fs.readFileSync(`${root}working-data/dist/pre.js`, 'utf8')
+    const pjsonValid = fs.readFileSync(`${root}validation/dist/pre.js`, 'utf8')
     const test = deepEqual(pjson, pjsonValid)
     test.should.equal(true)
   })

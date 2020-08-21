@@ -1,8 +1,5 @@
-module.exports = () => {
-  if (!process.env.GITHUB_ACTIONS || process.env.GITHUB_REPOSITORY === 'kaskadi/working-data') {
-    return
-  }
-  const { spawnSync } = require('child_process')
+const { spawnSync } = require('child_process')
+if (process.env.GITHUB_ACTIONS && process.env.GITHUB_REPOSITORY !== 'kaskadi/template-action') {
   const callingRepo = process.cwd()
   process.chdir(__dirname)
   process.chdir('..')
