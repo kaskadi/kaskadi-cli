@@ -26,6 +26,8 @@
   "homepage": "https://github.com/kaskadi/kaskadi-cli#readme",
   "dependencies": {
     "@kaskadi/better-colors": "0.0.1",
+    "commander": "^6.0.0",
+    "inquirer": "^7.3.3",
     "puppeteer": "^5.2.0"
   },
   "devDependencies": {
