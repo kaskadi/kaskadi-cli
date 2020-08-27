@@ -55,10 +55,11 @@ describe('init function', () => {
     it('should log an error message when passed an invalid argument', () => {
       const col = 'COL4'
       const type = 'error'
-      const msg = 'No operation specified, aborting...'
+      const opType = 'feioufjhweuiof'
+      const msg = `Invalid operation (type: ${opType}) specified, aborting...`
       const check = false
       const expectedOutput = expectOut(col, type, msg, check)
-      const stdout = captOut(init, ['feioufjhweuiof'])
+      const stdout = captOut(init, opType)
       stdout.should.equal(expectedOutput)
     })
   })
