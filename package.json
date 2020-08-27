@@ -1,6 +1,6 @@
 {
   "name": "kaskadi-cli",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -27,7 +27,10 @@
   "dependencies": {
     "@kaskadi/better-colors": "0.0.1",
     "commander": "^6.0.0",
+    "git-remote-origin-url": "^3.1.0",
+    "git-url-parse": "^11.1.3",
     "inquirer": "^7.3.3",
+    "node-fetch": "^2.6.0",
     "puppeteer": "^5.2.0"
   },
   "devDependencies": {

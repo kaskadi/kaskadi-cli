@@ -15,5 +15,9 @@ program
   .option('-e, --element <element>', 'element to render')
   .description('render the given element')
   .action(require('./functions/render/render.js'))
+program
+  .command('snyk-monitor')
+  .description('enable Snyk monitoring for your repository')
+  .action(require('./functions/snyk/monitor/monitor.js'))
 
 program.parse(process.argv)
