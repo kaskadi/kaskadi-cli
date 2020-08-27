@@ -18,6 +18,6 @@ program
 program
   .command('snyk-monitor')
   .description('enable Snyk monitoring for your repository')
-  .action(require('./functions/snyk/monitor.js'))
+  .action(require('./functions/snyk/monitor/monitor.js'))
 
 program.parse(process.argv)
