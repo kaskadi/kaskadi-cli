@@ -28,7 +28,8 @@
     "@kaskadi/better-colors": "0.0.1",
     "commander": "^6.0.0",
     "inquirer": "^7.3.3",
-    "puppeteer": "^5.2.0"
+    "puppeteer": "^5.2.0",
+    "snyk": "^1.385.0"
   },
   "devDependencies": {
     "capture-console": "^1.0.1",
