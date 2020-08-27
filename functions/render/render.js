@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs')
-module.exports = async function (...args) {
-  var options = extractArgs(...args)
+module.exports = async function ({ element }) {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
   await page.setCacheEnabled(false)
@@ -15,26 +14,11 @@ module.exports = async function (...args) {
   if (!fs.existsSync('./screenshots')) {
     fs.mkdirSync('./screenshots')
   }
-  const elem = await page.$$(options.element)
+  const elem = await page.$$(element)
   console.log(await page.content())
   for (var i = 0; i < elem.length; i++) {
     await elem[i].updateComplete
     await elem[i].screenshot({ path: `./screenshots/${i}.png` })
   }
   await browser.close()
-}
-
-function extractArgs (args) {
-  const res = {}
-  for (var i = 0; i < args.length; i++) {
-    const currentArg = args[i]
-    switch (currentArg) {
-      case '--element':
-      case '-e':
-        i++
-        res.element = args[i]
-        break
-    }
-  }
-  return res
 }

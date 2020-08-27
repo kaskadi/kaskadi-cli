@@ -21,12 +21,11 @@ const opTypeData = {
   }
 }
 
-module.exports = args => {
-  const opType = args[0]
+module.exports = (opType, program) => {
   const wd = process.cwd()
   const name = wd.split('/')[wd.split('/').length - 1]
   if (!opTypeData[opType]) {
-    require('./helpers/log.js')(require('./default-colors.js').COL4, 'error', 'No operation specified, aborting...')
+    require('./helpers/log.js')(require('./default-colors.js').COL4, 'error', `Invalid operation (type: ${opType}) specified, aborting...`)
   } else {
     opTypeData[opType].handler(wd, opTypeData[opType].baseName, name)
   }
