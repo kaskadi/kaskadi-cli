@@ -14,6 +14,6 @@ program
   .command('render')
   .option('-e, --element <element>', 'element to render')
   .description('render the given element')
-  .action(require('./functions/render.js'))
+  .action(require('./functions/render/render.js'))
 
 program.parse(process.argv)
