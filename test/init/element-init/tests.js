@@ -27,6 +27,12 @@ module.exports = (root, baseName, folderName, baseClassName, className) => {
     const test = deepEqual(pjson, pjsonValid)
     test.should.equal(true)
   })
+  it(`should rename all occurences of ${baseName} to ${folderName} in package-lock.json`, () => {
+    const pjson = JSON.parse(fs.readFileSync(`${root}working-data/package-lock.json`, 'utf8'))
+    const pjsonValid = JSON.parse(fs.readFileSync(`${root}validation/package-lock.json`, 'utf8'))
+    const test = deepEqual(pjson, pjsonValid)
+    test.should.equal(true)
+  })
   describe(`should rename ${baseName}.js to ${folderName}.js and replace all occurences of ${baseName} and ${baseClassName}`, () => {
     it(`should rename ${baseName}.js to ${folderName}.js`, () => {
       const baseFile = fs.existsSync(`${root}working-data/${baseName}.js`)

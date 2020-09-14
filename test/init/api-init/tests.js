@@ -22,6 +22,12 @@ module.exports = (root, baseName, folderName) => {
     const test = deepEqual(pjson, pjsonValid)
     test.should.equal(true)
   })
+  it(`should rename all occurences of ${baseName} to ${folderName} in package-lock.json`, () => {
+    const pjson = JSON.parse(fs.readFileSync(`${root}working-data/package-lock.json`, 'utf8'))
+    const pjsonValid = JSON.parse(fs.readFileSync(`${root}validation/package-lock.json`, 'utf8'))
+    const test = deepEqual(pjson, pjsonValid)
+    test.should.equal(true)
+  })
   it(`should rename all occurences of ${baseName} to ${folderName} in layer/nodejs/package.json`, () => {
     const pjson = JSON.parse(fs.readFileSync(`${root}working-data/layer/nodejs/package.json`, 'utf8'))
     const pjsonValid = JSON.parse(fs.readFileSync(`${root}validation/layer/nodejs/package.json`, 'utf8'))
