@@ -18,6 +18,10 @@ const opTypeData = {
   layer: {
     baseName: 'template-kaskadi-layer',
     handler: require('./init-handlers/layer-init.js')
+  },
+  package: {
+    baseName: 'template-npm-pkg',
+    handler: require('./init-handlers/package-init.js')
   }
 }
 
