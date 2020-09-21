@@ -8,7 +8,7 @@ program
   .version(require('./package.json').version)
 program
   .command('init <type>')
-  .description('initialize a repository. <type> argument defines which kind of template the repository is following. Valid values are: action, api, lambda, element and layer.')
+  .description('initialize a repository. <type> argument defines which kind of template the repository is following. Valid values are: action, api, lambda, element, layer and package.')
   .action(require('./functions/init/init.js'))
 program
   .command('render')
