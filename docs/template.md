@@ -17,4 +17,14 @@
 
 {{>main}}
 
-In order to know which commands are available in `kaskadi-cli` please run `kaskadi [--help, -h]` in your terminal.
+**CLI**:
+```bash
+kaskadi <cmd> [options]
+```
+
+**Available commands**:
+```bash
+kaskadi [--help, -h]
+```
+
+This will list all commands available in `kaskadi-cli`.
