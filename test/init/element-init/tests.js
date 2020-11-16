@@ -6,9 +6,9 @@ const chai = require('chai')
 chai.should()
 
 module.exports = (root, baseName, folderName, baseClassName, className) => {
-  it(`should rename all occurences of ${baseName} to ${folderName} in README.md`, () => {
-    const file = fs.readFileSync(`${root}working-data/README.md`, 'utf8').trim()
-    const validationFile = fs.readFileSync(`${root}validation/README.md`, 'utf8').trim()
+  it(`should rename all occurences of ${baseName} to ${folderName} in docs/template.md`, () => {
+    const file = fs.readFileSync(`${root}working-data/docs/template.md`, 'utf8').trim()
+    const validationFile = fs.readFileSync(`${root}validation/docs/template.md`, 'utf8').trim()
     file.should.equal(validationFile)
   })
   it(`should rename all occurences of ${baseName} to ${folderName} in test/basic.test.js`, () => {

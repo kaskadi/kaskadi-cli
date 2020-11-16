@@ -1,21 +1,26 @@
 [![Build status](https://img.shields.io/github/workflow/status/kaskadi/template-action/build?label=build&logo=mocha)](https://github.com/kaskadi/template-action/actions?query=workflow%3Abuild)
+[![Static code analysis status](https://img.shields.io/github/workflow/status/kaskadi/template-action/analyze-code?label=codeQL&logo=github)](https://github.com/kaskadi/template-action/actions?query=workflow%3Aanalyze-code)
+[![Docs generation status](https://img.shields.io/github/workflow/status/kaskadi/template-action/generate-docs?label=docs&logo=read-the-docs)](https://github.com/kaskadi/template-action/actions?query=workflow%3Agenerate-docs)
 
 **CodeClimate**
 
 [![](https://img.shields.io/codeclimate/maintainability/kaskadi/template-action?label=maintainability&logo=Code%20Climate)](https://codeclimate.com/github/kaskadi/template-action)
 [![](https://img.shields.io/codeclimate/tech-debt/kaskadi/template-action?label=technical%20debt&logo=Code%20Climate)](https://codeclimate.com/github/kaskadi/template-action)
-<!-- ******** Can uncomment this when your coverage is in place ******** -->
-<!-- [![](https://img.shields.io/codeclimate/coverage/kaskadi/template-action?label=test%20coverage&logo=Code%20Climate)](https://codeclimate.com/github/kaskadi/template-action) -->
+[![](https://img.shields.io/codeclimate/coverage/kaskadi/template-action?label=test%20coverage&logo=Code%20Climate)](https://codeclimate.com/github/kaskadi/template-action)
 
-**LGTM**
-
-[![](https://img.shields.io/lgtm/grade/javascript/github/kaskadi/template-action?label=code%20quality&logo=lgtm)](https://lgtm.com/projects/g/kaskadi/template-action/?mode=list)
+<!-- You can add badges inside of this section if you'd like -->
 
 ****
 
 # Testing
 
-`mocha`, `chai` & `standard` are available as dev dependencies.
+`mocha`, `chai`, `nyc` & `standard` are available as dev dependencies.
+
+A `build` workflow (see [here](./.github/workflows/build.yml)) is running on `pull request` and will execute your test suite before allowing you to merge your PR. It also has a `coverage` job already prepared that you can comment out as soon as your testing is in place and your `REPORTER_ID` is in the repository secrets. This is the ID on _Code Climate_ used for uploading code coverage reports.
+
+Beside running your unit tests, this workflow also runs a static code analysis to find any vulnerability in your code. If a vulnerability is found, the workflow will directly fail and a notification will appear in the `Security` tab of your repository.
+
+**Note:** a `analyze-code` workflow (see [here](./.github/workflows/analyze-code.yml)) is also in charge of performing a static code analysis on `push`. This ensure that vulnerabilities are catched even when pushing hotfixes.
 
 ****
 
@@ -29,5 +34,8 @@ You can configure the template used to generate the action documentation [here](
 
 ****
 
+<!-- automatically generated documentation will be placed in here -->
 {{>main}}
-:point_down: **Here goes any extra details on how to use the action** :point_down:
+<!-- automatically generated documentation will be placed in here -->
+
+<!-- You can customize this template as you'd like! -->

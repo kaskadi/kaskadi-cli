@@ -4,7 +4,7 @@ module.exports = function actionInit (wd, baseName, name) {
   const initData = [{
     baseName,
     name,
-    paths: ['package.json', 'package-lock.json', 'README.md', 'serverless.yml', 'layer/nodejs/package.json']
+    paths: ['package.json', 'package-lock.json', 'docs/template.md', 'serverless.yml', 'layer/nodejs/package.json']
   },
   {
     baseName: 'Template API',

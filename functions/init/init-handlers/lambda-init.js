@@ -6,7 +6,7 @@ module.exports = function lambdaInit (wd, baseName, name) {
   const initData = [{
     baseName,
     name,
-    paths: ['package.json', 'package-lock.json', 'README.md', 'serverless.yml']
+    paths: ['package.json', 'package-lock.json', 'docs/template.md', 'serverless.yml']
   },
   {
     baseName: snakeToCamel(baseName.replace('-lambda', '')),

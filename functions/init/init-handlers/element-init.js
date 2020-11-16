@@ -6,7 +6,7 @@ module.exports = function elementInit (wd, baseName, name) {
   const initData = [{
     baseName,
     name,
-    paths: ['package.json', 'package-lock.json', 'test/basic.test.js', 'README.md', 'example/index.html', `${baseName}.js`]
+    paths: ['package.json', 'package-lock.json', 'test/basic.test.js', 'docs/template.md', 'example/index.html', `${baseName}.js`]
   },
   {
     baseName: snakeToCamel(baseName),
