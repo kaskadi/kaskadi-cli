@@ -28,6 +28,24 @@ module.exports = (root, baseName, baseCamelName, folderName, camelName) => {
     const test = deepEqual(pjson, pjsonValid)
     test.should.equal(true)
   })
+  it(`should rename all occurences of ${baseName} to ${folderName} in layer/nodejs/package.json`, () => {
+    const pjson = JSON.parse(fs.readFileSync(`${root}working-data/layer/nodejs/package.json`, 'utf8'))
+    const pjsonValid = JSON.parse(fs.readFileSync(`${root}validation/layer/nodejs/package.json`, 'utf8'))
+    const test = deepEqual(pjson, pjsonValid)
+    test.should.equal(true)
+  })
+  it(`should rename all occurences of ${baseName} to ${folderName} in layer/nodejs/package-lock.json`, () => {
+    const pjson = JSON.parse(fs.readFileSync(`${root}working-data/layer/nodejs/package-lock.json`, 'utf8'))
+    const pjsonValid = JSON.parse(fs.readFileSync(`${root}validation/layer/nodejs/package-lock.json`, 'utf8'))
+    const test = deepEqual(pjson, pjsonValid)
+    test.should.equal(true)
+  })
+  it(`should rename layer/nodejs/${baseName}-utils to layer/nodejs/${folderName}-utils`, () => {
+    const baseFile = fs.existsSync(`${root}working-data/layer/nodejs/${baseName}-utils`)
+    const newFile = fs.existsSync(`${root}working-data/layer/nodejs/${folderName}-utils`)
+    baseFile.should.equal(false)
+    newFile.should.equal(true)
+  })
   it(`should rename ${baseName}.js to ${folderName}.js`, () => {
     const baseFile = fs.existsSync(`${root}working-data/${baseName}.js`)
     const newFile = fs.existsSync(`${root}working-data/${folderName}.js`)

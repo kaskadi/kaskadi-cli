@@ -6,7 +6,7 @@ module.exports = function lambdaInit (wd, baseName, name) {
   const initData = [{
     baseName,
     name,
-    paths: ['package.json', 'package-lock.json', 'docs/template.md', 'serverless.yml']
+    paths: ['package.json', 'package-lock.json', 'docs/template.md', 'serverless.yml', 'layer/nodejs/package.json', 'layer/nodejs/package-lock.json']
   },
   {
     baseName: snakeToCamel(baseName.replace('-lambda', '')),
@@ -17,6 +17,10 @@ module.exports = function lambdaInit (wd, baseName, name) {
   const files = [{
     baseName: `${baseName}.js`,
     name: `${name}.js`
+  },
+  {
+    baseName: `layer/nodejs/${baseName}-utils`,
+    name: `layer/nodejs/${name}-utils`
   }]
   renameFiles(wd, files)
 }
