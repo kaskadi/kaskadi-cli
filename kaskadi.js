@@ -16,10 +16,6 @@ program
   .description('render the given element')
   .action(require('./functions/render/render.js'))
 program
-  .command('snyk-monitor')
-  .description('enable Snyk monitoring for your repository')
-  .action(require('./functions/snyk/monitor/monitor.js'))
-program
   .command('remote <action>')
   .description('interact with a remote repository. <action> argument defines which kind of action we would like to perform on this remote repository. Valid values are: create, add, deploy.')
   .action(require('./functions/remote/remote.js'))
