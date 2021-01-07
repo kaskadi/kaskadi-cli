@@ -22,4 +22,5 @@ module.exports = async ({ ip, sshPath, port }) => {
     'chmod +x hooks/post-receive'
   ]
   ssh(commands.join(' && '))
+  console.log(`Remote repository successfully set up @ ${ip}!`)
 }
