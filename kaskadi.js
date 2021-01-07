@@ -20,8 +20,8 @@ program
   .description('enable Snyk monitoring for your repository')
   .action(require('./functions/snyk/monitor/monitor.js'))
 program
-  .command('remote <type>')
-  .description('interact with a remote repository. <type> argument defines which kind of action we would like to perform on this remote repository. Valid values are: create, add, deploy.')
+  .command('remote <action>')
+  .description('interact with a remote repository. <action> argument defines which kind of action we would like to perform on this remote repository. Valid values are: create, add, deploy.')
   .action(require('./functions/remote/remote.js'))
 
 program.parse(process.argv)
