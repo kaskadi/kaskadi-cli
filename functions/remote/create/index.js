@@ -1,5 +1,12 @@
-function getWriteHookCmds (content) {
-  return content.map(line => `echo "${line}" >> hooks/post-receive`)
+function writeHook (dest, content) {
+  return `cat > ${dest} <<< $'${content}'`
+}
+
+function getHook (working) {
+  const { readFileSync } = require('fs')
+  const { join } = require('path')
+  return readFileSync(join(__dirname, 'hooks-data/standard.sh'), 'utf8')
+    .replace(/{{working-copy}}/g, working)
 }
 
 module.exports = async ({ ip, sshPath, port }) => {
@@ -11,14 +18,7 @@ module.exports = async ({ ip, sshPath, port }) => {
     `cd ${bare}`,
     'git init --bare',
     'touch hooks/post-receive',
-    ...getWriteHookCmds([
-      '#!/bin/sh',
-      `GIT_WORK_TREE=${working} git checkout -f`,
-      'PWD="$(pwd)"',
-      `cd ${working}`,
-      'npm i &>/dev/null',
-      'cd $PWD'
-    ]),
+    writeHook('hooks/post-receive', getHook(working)),
     'chmod +x hooks/post-receive'
   ]
   ssh(commands.join(' && '))
