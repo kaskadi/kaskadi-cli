@@ -6,9 +6,11 @@ module.exports = ({ name, services }) => {
     console.log(`INFO: no service with the name ${name} is currently installed.`)
     process.exit(0)
   }
+  console.log(`INFO: uninstalling service ${name}...`)
   for (const service of services) {
     uninstallService(name, service)
   }
+  console.log(`SUCCESS: successfully uninstalled ${name}!`)
 }
 
 function uninstallService (name, { isSystem, location }) {

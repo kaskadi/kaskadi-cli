@@ -1,6 +1,7 @@
 const { existsSync } = require('fs')
 
 module.exports = ({ name }) => {
+  console.log(`INFO: scanning services for ${name}...`)
   const systemServiceLocation = `/lib/systemd/system/${name}.service`
   const userServiceLocation = `${process.env.HOME}/.config/systemd/user/${name}.service`
   const services = [
