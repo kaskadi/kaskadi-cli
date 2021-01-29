@@ -3,8 +3,7 @@ Description={{name}}
 After=network.target
 
 [Service]
-Type=simple
-User={{user}}
+Type=simple{{user}}
 ExecStart=/usr/bin/node {{entry}}
 Restart=on-failure
 

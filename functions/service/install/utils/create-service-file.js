@@ -3,32 +3,36 @@ const { join, dirname } = require('path')
 const execCmd = require('./exec-cmd.js')
 
 module.exports = (opts) => {
-  const { system } = opts
-  console.log(`INFO: creating service file at ${system ? 'system' : 'user'} level...`)
-  const serviceFile = getServiceFile(opts, 'name', 'user', 'entry')
-  const [filePath, file] = writeServiceFile(serviceFile, opts)
+  const { user } = opts
+  console.log(`INFO: creating service file at ${user ? 'user' : 'system'} level...`)
+  const [filePath, file] = writeServiceFile(getServiceFile(opts), opts)
   console.log(`SUCCESS: service file successfully created at ${filePath}! See file content below.\n`)
   console.log(file)
   console.log('\n')
 }
 
 function writeServiceFile (file, opts) {
-  const { name, system } = opts
+  const { name, user } = opts
   const tmpFilePath = `/tmp/${Math.random().toString(36).substring(2, 15)}.service`
   writeFileSync(tmpFilePath, file, 'utf8')
-  const filePath = system ? `/lib/systemd/system/${name}.service` : `${process.env.HOME}/.config/systemd/user/${name}.service`
-  if (!system) {
+  const filePath = user ? `/lib/systemd/system/${name}.service` : `${process.env.HOME}/.config/systemd/user/${name}.service`
+  if (!user) {
     createStructure(filePath)
   }
-  execCmd(system, 'mv', tmpFilePath, filePath)
+  execCmd(user, 'mv', tmpFilePath, filePath)
   return [filePath, file]
 }
 
-function getServiceFile (opts, ...phs) {
+function getServiceFile (opts) {
   let template = readFileSync(join(__dirname, 'template.service'), 'utf8')
-  for (const ph of phs) {
+  for (const ph of ['name', 'entry', 'user']) {
     const regexp = new RegExp(`{{${ph}}}`, 'g')
-    template = template.replace(regexp, opts[ph])
+    if (ph === 'user') {
+      // user specific case
+      template = template.replace(regexp, opts[ph] ? `\nUser=${opts[ph]}\n` : '')
+    } else {
+      template = template.replace(regexp, opts[ph])
+    }
   }
   return template
 }

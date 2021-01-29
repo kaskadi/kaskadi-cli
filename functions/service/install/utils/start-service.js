@@ -15,16 +15,16 @@ function getSystemCtlCmds (isSystem, ...cmds) {
 }
 
 function reload (opts) {
-  const { system } = opts
-  execCmd(system, 'systemctl', ...getSystemCtlCmds(system, 'daemon-reload'))
+  const { user } = opts
+  execCmd(user, 'systemctl', ...getSystemCtlCmds(user, 'daemon-reload'))
 }
 
 function start (opts) {
-  const { system, name } = opts
-  execCmd(system, 'systemctl', ...getSystemCtlCmds(system, 'start', name))
+  const { user, name } = opts
+  execCmd(user, 'systemctl', ...getSystemCtlCmds(user, 'start', name))
 }
 
 function enable (opts) {
-  const { system, name } = opts
-  execCmd(system, 'systemctl', ...getSystemCtlCmds(system, 'enable', name))
+  const { user, name } = opts
+  execCmd(user, 'systemctl', ...getSystemCtlCmds(user, 'enable', name))
 }
