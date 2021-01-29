@@ -16,6 +16,10 @@ function writeServiceFile (file, opts) {
   const tmpFilePath = `/tmp/${Math.random().toString(36).substring(2, 15)}.service`
   writeFileSync(tmpFilePath, file, 'utf8')
   const filePath = user ? `/lib/systemd/system/${name}.service` : `${process.env.HOME}/.config/systemd/user/${name}.service`
+  if (existsSync(filePath)) {
+    console.log(`ERROR: service with name ${name} already exists! Please provide a valid name.`)
+    process.exit(1)
+  }
   if (!user) {
     createStructure(filePath)
   }
