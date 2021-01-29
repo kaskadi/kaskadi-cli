@@ -30,15 +30,19 @@ function writeServiceFile (file, opts) {
 function getServiceFile (opts) {
   let template = readFileSync(join(__dirname, 'template.service'), 'utf8')
   for (const ph of ['name', 'entry', 'user']) {
-    const regexp = new RegExp(`{{${ph}}}`, 'g')
-    const replacementValue = ph === 'user'
-      ? opts[ph]
-        ? `\nUser=${opts[ph]}`
-        : ''
-      : opts[ph]
-    template = template.replace(regexp, replacementValue)
+    template = replacePlaceholder(template, ph, opts[ph])
   }
   return template
+}
+
+function replacePlaceholder (str, ph, value) {
+  const regexp = new RegExp(`{{${ph}}}`, 'g')
+  const replacementValue = ph === 'user'
+    ? value
+      ? `\nUser=${value}`
+      : ''
+    : value
+  return str.replace(regexp, replacementValue)
 }
 
 function createStructure (path) {
