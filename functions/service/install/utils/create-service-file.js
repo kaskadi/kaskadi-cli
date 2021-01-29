@@ -31,12 +31,12 @@ function getServiceFile (opts) {
   let template = readFileSync(join(__dirname, 'template.service'), 'utf8')
   for (const ph of ['name', 'entry', 'user']) {
     const regexp = new RegExp(`{{${ph}}}`, 'g')
-    if (ph === 'user') {
-      // user specific case
-      template = template.replace(regexp, opts[ph] ? `\nUser=${opts[ph]}` : '')
-    } else {
-      template = template.replace(regexp, opts[ph])
-    }
+    const replacementValue = ph === 'user'
+      ? opts[ph]
+        ? `\nUser=${opts[ph]}`
+        : ''
+      : opts[ph]
+    template = template.replace(regexp, replacementValue)
   }
   return template
 }
