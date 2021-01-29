@@ -1,6 +1,6 @@
 const { readFileSync, writeFileSync, existsSync, mkdirSync } = require('fs')
 const { join, dirname } = require('path')
-const execCmd = require('./exec-cmd.js')
+const execCmd = require('../../utils/exec-cmd.js')
 
 module.exports = (opts) => {
   const { user } = opts

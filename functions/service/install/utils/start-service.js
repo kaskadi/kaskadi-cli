@@ -1,30 +1,11 @@
-const execCmd = require('./exec-cmd.js')
+const systemctl = require('../../utils/systemctl.js')
 
-module.exports = (opts) => {
+module.exports = ({ user, name, reboot }) => {
   console.log('INFO: starting service...')
-  reload(opts)
-  start(opts)
-  if (opts.reboot) {
+  systemctl(user, 'daemon-reload')
+  systemctl(user, 'start', name)
+  if (reboot) {
     console.log('INFO: enabling service restart on machine reboot...')
-    enable(opts)
+    systemctl(user, 'enable', name)
   }
-}
-
-function getSystemCtlCmds (isSystem, ...cmds) {
-  return [...isSystem ? [] : ['--user'], ...cmds]
-}
-
-function reload (opts) {
-  const { user } = opts
-  execCmd(user, 'systemctl', ...getSystemCtlCmds(user, 'daemon-reload'))
-}
-
-function start (opts) {
-  const { user, name } = opts
-  execCmd(user, 'systemctl', ...getSystemCtlCmds(user, 'start', name))
-}
-
-function enable (opts) {
-  const { user, name } = opts
-  execCmd(user, 'systemctl', ...getSystemCtlCmds(user, 'enable', name))
 }
