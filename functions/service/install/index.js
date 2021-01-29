@@ -1,5 +1,6 @@
 const checkOpts = require('./utils/check-opts.js')
 const createServiceFile = require('./utils/create-service-file.js')
+const startService = require('./utils/start-service.js')
 
 module.exports = (opts) => {
   console.log('INFO: checking command options...')
@@ -10,4 +11,5 @@ module.exports = (opts) => {
     process.exit(1)
   }
   createServiceFile(opts)
+  startService(opts)
 }
