@@ -1,6 +1,6 @@
 const { readFileSync, writeFileSync, existsSync, mkdirSync } = require('fs')
-const { spawnSync } = require('child_process')
 const { join, dirname } = require('path')
+const execCmd = require('./exec-cmd.js')
 
 module.exports = (opts) => {
   const { system } = opts
@@ -20,8 +20,7 @@ function writeServiceFile (file, opts) {
   if (!system) {
     createStructure(filePath)
   }
-  const cmds = [...system ? ['sudo'] : [], ...['mv', tmpFilePath, filePath]]
-  spawnSync(cmds[0], cmds.slice(1), { stdio: 'inherit' })
+  execCmd(system, 'mv', tmpFilePath, filePath)
   return [filePath, file]
 }
 
