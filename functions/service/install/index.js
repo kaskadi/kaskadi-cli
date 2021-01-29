@@ -2,6 +2,7 @@ const checkOpts = require('./utils/check-opts.js')
 const createServiceFile = require('./utils/create-service-file.js')
 
 module.exports = (opts) => {
+  console.log('INFO: checking command options...')
   const optsValidation = checkOpts(opts)
   if (!optsValidation.isValid) {
     const { missingOpts } = optsValidation

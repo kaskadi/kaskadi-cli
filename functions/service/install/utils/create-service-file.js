@@ -3,8 +3,13 @@ const { spawnSync } = require('child_process')
 const { join, dirname } = require('path')
 
 module.exports = (opts) => {
+  const { system } = opts
+  console.log(`INFO: creating service file at ${system ? 'system' : 'user'} level...`)
   const serviceFile = getServiceFile(opts, 'name', 'user', 'entry')
-  writeServiceFile(serviceFile, opts)
+  const [filePath, file] = writeServiceFile(serviceFile, opts)
+  console.log(`SUCCESS: service file successfully created at ${filePath}! See file content below.\n`)
+  console.log(file)
+  console.log('\n')
 }
 
 function writeServiceFile (file, opts) {
@@ -17,6 +22,7 @@ function writeServiceFile (file, opts) {
   }
   const cmds = [...system ? ['sudo'] : [], ...['mv', tmpFilePath, filePath]]
   spawnSync(cmds[0], cmds.slice(1), { stdio: 'inherit' })
+  return [filePath, file]
 }
 
 function getServiceFile (opts, ...phs) {
