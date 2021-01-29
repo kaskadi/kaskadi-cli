@@ -1,4 +1,4 @@
-const validActions = ['install', 'delete']
+const validActions = ['install', 'uninstall']
 
 module.exports = function (action, opts) {
   if (!validActions.includes(action)) {
