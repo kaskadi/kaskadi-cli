@@ -29,7 +29,7 @@ function getServiceFile (opts) {
     const regexp = new RegExp(`{{${ph}}}`, 'g')
     if (ph === 'user') {
       // user specific case
-      template = template.replace(regexp, opts[ph] ? `\nUser=${opts[ph]}\n` : '')
+      template = template.replace(regexp, opts[ph] ? `\nUser=${opts[ph]}` : '')
     } else {
       template = template.replace(regexp, opts[ph])
     }
