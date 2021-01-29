@@ -19,5 +19,13 @@ program
   .command('remote <action>')
   .description('interact with a remote repository. <action> argument defines which kind of action we would like to perform on this remote repository. Valid values are: create, add, deploy.')
   .action(require('./functions/remote/remote.js'))
+program
+  .command('service <action>')
+  .option('-n, --name <name>', 'name of the service')
+  .option('-e, --entry <entry>', 'path to process entry point. Only for install.')
+  .option('-u, --user <user>', 'user owning the process. If not provided this will assume that the service should be started as the current user. Only for install.')
+  .option('-r, --reboot', 'whether or not to restart the service on reboot. Only for install.')
+  .description('manipulate services to be used by systemd. <action> argument defines which kind of action we would like to perform on a service. Valid values are: install, uninstall.')
+  .action(require('./functions/service/service.js'))
 
 program.parse(process.argv)
