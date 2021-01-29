@@ -25,7 +25,7 @@ const opTypeData = {
   }
 }
 
-module.exports = (opType, program) => {
+module.exports = (opType) => {
   const wd = process.cwd()
   const name = wd.split('/')[wd.split('/').length - 1]
   if (!opTypeData[opType]) {
