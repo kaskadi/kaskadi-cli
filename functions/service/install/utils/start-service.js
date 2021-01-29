@@ -3,7 +3,7 @@ const execCmd = require('./exec-cmd.js')
 module.exports = (opts) => {
   reload(opts)
   start(opts)
-  if (opts.enable) {
+  if (opts.reboot) {
     enable(opts)
   }
 }
