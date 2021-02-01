@@ -17,8 +17,8 @@ function writeServiceFile (file, opts) {
   writeFileSync(tmpFilePath, file, 'utf8')
   const filePath = user ? `/lib/systemd/system/${name}.service` : `${process.env.HOME}/.config/systemd/user/${name}.service`
   if (existsSync(filePath)) {
-    console.log(`ERROR: service with name ${name} already exists! Please provide a valid name.`)
-    process.exit(1)
+    console.log(`WARN: service with name ${name} already exists! Please provide a valid name.`)
+    process.exit(0)
   }
   if (!user) {
     createStructure(filePath)
