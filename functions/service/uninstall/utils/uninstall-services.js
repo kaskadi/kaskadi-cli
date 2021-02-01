@@ -1,4 +1,4 @@
-const systemctl = require('../../utils/systemctl.js')
+let systemctl = require('../../utils/systemctl.js')
 const execCmd = require('../../utils/exec-cmd.js')
 
 module.exports = ({ name, services }) => {
@@ -14,9 +14,10 @@ module.exports = ({ name, services }) => {
 }
 
 function uninstallService (name, { isSystem, location }) {
-  systemctl(isSystem, 'stop', name)
-  systemctl(isSystem, 'disable', name)
-  execCmd(isSystem, 'rm', location)
-  systemctl(isSystem, 'daemon-reload')
-  systemctl(isSystem, 'reset-failed')
+  systemctl = systemctl(isSystem)
+  systemctl('stop', name)
+  systemctl('disable', name)
+  execCmd(isSystem)('rm', location)
+  systemctl('daemon-reload')
+  systemctl('reset-failed')
 }

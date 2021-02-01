@@ -4,7 +4,7 @@ const execCmd = require('../../utils/exec-cmd.js')
 
 module.exports = (opts) => {
   const { user } = opts
-  console.log(`INFO: creating service file at ${user ? 'user' : 'system'} level...`)
+  console.log(`INFO: creating service file at ${user ? 'system' : 'user'} level...`)
   const [filePath, file] = writeServiceFile(getServiceFile(opts), opts)
   console.log(`SUCCESS: service file successfully created at ${filePath}! See file content below.\n`)
   console.log(file)
@@ -23,7 +23,7 @@ function writeServiceFile (file, opts) {
   if (!user) {
     createStructure(filePath)
   }
-  execCmd(user, 'mv', tmpFilePath, filePath)
+  execCmd(user)('mv', tmpFilePath, filePath)
   return [filePath, file]
 }
 
