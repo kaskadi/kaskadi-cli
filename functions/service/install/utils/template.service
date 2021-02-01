@@ -8,4 +8,4 @@ ExecStart=/usr/bin/node {{entry}}
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
+WantedBy={{wantedBy}}.target

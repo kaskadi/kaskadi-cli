@@ -29,19 +29,26 @@ function writeServiceFile (file, opts) {
 
 function getServiceFile (opts) {
   let template = readFileSync(join(__dirname, 'template.service'), 'utf8')
-  for (const ph of ['name', 'entry', 'user']) {
-    template = replacePlaceholder(template, ph, opts[ph])
+  for (const ph of ['name', 'entry', 'user', 'wantedBy']) {
+    template = replacePlaceholder(template, ph, opts[ph], opts.user)
   }
   return template
 }
 
-function replacePlaceholder (str, ph, value) {
+function replacePlaceholder (str, ph, value, user) {
   const regexp = new RegExp(`{{${ph}}}`, 'g')
-  const replacementValue = ph === 'user'
-    ? value
-      ? `\nUser=${value}`
-      : ''
-    : value
+  let replacementValue
+  switch (ph) {
+    case 'user':
+      replacementValue = value ? `\nUser=${value}` : ''
+      break
+    case 'wantedBy':
+      replacementValue = user ? 'multi-user' : 'default'
+      break
+    default:
+      replacementValue = value
+      break
+  }
   return str.replace(regexp, replacementValue)
 }
 
